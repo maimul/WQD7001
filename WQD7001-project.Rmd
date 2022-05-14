@@ -13,6 +13,7 @@ library("codebook")
 
 ## R Markdown
 ```{r}
+# Change this line according to your csv file
 df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv')
 # df2 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-por.csv')
 
