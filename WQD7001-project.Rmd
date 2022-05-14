@@ -1,0 +1,59 @@
+---
+title: "Parents’ Educational Background and Children’s Success"
+author: "Maimul"
+date: '2022-05-04'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library("codebook")
+```
+
+## R Markdown
+```{r}
+df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv')
+df2 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-por.csv')
+
+# Explore the dataset
+dim(df1)
+# glimpse is better than str(). More organised, easy to read. 
+# Also dim f(x) is baked into the glimpse.
+glimpse(df1) # from tidyverse
+View(df1) # view the dataset in a different window
+
+# Not best practise
+# attach(df1) # Basically next time we need to get a column inside a f(x) we don't need to call df$column
+names(df1)
+
+# Check for missing data in df1 and df2
+colSums(is.na(df1))
+colSums(is.na(df2))
+
+
+# Change the necessary columns to factors
+# Ordered
+df1$famsize <- factor(df1$famsize, levels = c('LE3','GT3'), ordered = TRUE)
+df1$Medu <- factor(df1$Medu, ordered = TRUE)
+df1$Fedu <- factor(df1$Fedu, ordered = TRUE)
+df1$traveltime <- factor(df1$traveltime, ordered = TRUE)
+df1$studytime <- factor(df1$studytime, ordered = TRUE)
+df1$health <- factor(df1$health, ordered = TRUE)
+df1$Walc <- factor(df1$Walc, ordered = TRUE)
+df1$Dalc <- factor(df1$Dalc, ordered = TRUE)
+df1$goout <- factor(df1$goout, ordered = TRUE)
+df1$freetime <- factor(df1$freetime, ordered = TRUE)
+df1$famrel <- factor(df1$famrel, ordered = TRUE)
+
+df1$school <- factor(df1$school)
+df1$sex <- factor(df1$sex)
+df1$Pstatus <- factor(df1$Pstatus)
+df1$Mjob <- factor(df1$Mjob)
+df1$guardian <- factor(df1$guardian)
+df1$failures <- factor(df1$guardian)
+df1$address <- factor(df1$address)
+
+
+```
+
