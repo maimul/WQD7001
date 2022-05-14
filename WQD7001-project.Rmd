@@ -14,7 +14,7 @@ library("codebook")
 ## R Markdown
 ```{r}
 df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv')
-df2 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-por.csv')
+# df2 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-por.csv')
 
 # Explore the dataset
 dim(df1)
@@ -23,7 +23,7 @@ dim(df1)
 glimpse(df1) # from tidyverse
 View(df1) # view the dataset in a different window
 
-# Not best practise
+# Not best practice to use attach()
 # attach(df1) # Basically next time we need to get a column inside a f(x) we don't need to call df$column
 names(df1)
 
