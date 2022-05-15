@@ -11,27 +11,62 @@ library(tidyverse)
 library("codebook")
 ```
 
-## R Markdown
-```{r}
-# Change this line according to your csv file
-df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv')
-# df2 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-por.csv')
 
-# Explore the dataset
-dim(df1)
+### Load file to r as dataframe
+```{r}
+df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
+```
+
+
+
+### Explore the dataset
+```{r}
+print(dim(df1)) # Check the dimension of the dataset
+
 # glimpse is better than str(). More organised, easy to read. 
 # Also dim f(x) is baked into the glimpse.
-glimpse(df1) # from tidyverse
+print(glimpse(df1)) # from tidyverse
 View(df1) # view the dataset in a different window
 
 # Not best practice to use attach()
 # attach(df1) # Basically next time we need to get a column inside a f(x) we don't need to call df$column
+
+# Explore the column names
 names(df1)
 
-# Check for missing data in df1 and df2
-colSums(is.na(df1))
-colSums(is.na(df2))
+# Before checking for missing values, list all unique values in the dataframe. Look for "" cells
+unique(unlist(df1))
+```
+There are no empty cells to impute. Example: "" to NA
 
+```{r}
+# Check for missing data in df1
+print(colSums(is.na(df1)))
+```
+No NA values. 
+
+```{r}
+# Before we change the datatypes we must check the unique values in each column.
+# Start!. Adding Start for easier readability.
+lapply(df1, unique)
+```
+
+
+### Change the datatype of each accordingly 
+```{r}
+# List columns that should be factor (not ordered)
+col_factors <- c('school', 'sex', 'address','Pstatus','Mjob','Fjob','reason','guardian')
+df1[col_factors] <- lapply(df1[col_factors], factor)
+
+# List columns that should be factor (ordered)
+col_factorsO <- c('famsize')
+df1[col_factorsO] <- lapply(df1[col_factorsO], ordered, levels = c('LE3','GT3'))
+
+
+
+
+# List columns that should be binary
+col_binary <- c('schoolsup','famsup','paid','activities','nursery','higher','internet','romantic')
 
 # Change the necessary columns to factors
 # Ordered
