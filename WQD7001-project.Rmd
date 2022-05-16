@@ -62,34 +62,8 @@ df1[col_factors] <- lapply(df1[col_factors], factor)
 col_factorsO <- c('famsize')
 df1[col_factorsO] <- lapply(df1[col_factorsO], ordered, levels = c('LE3','GT3'))
 
-
-
-
 # List columns that should be binary
 col_binary <- c('schoolsup','famsup','paid','activities','nursery','higher','internet','romantic')
-
-# Change the necessary columns to factors
-# Ordered
-df1$famsize <- factor(df1$famsize, levels = c('LE3','GT3'), ordered = TRUE)
-df1$Medu <- factor(df1$Medu, ordered = TRUE)
-df1$Fedu <- factor(df1$Fedu, ordered = TRUE)
-df1$traveltime <- factor(df1$traveltime, ordered = TRUE)
-df1$studytime <- factor(df1$studytime, ordered = TRUE)
-df1$health <- factor(df1$health, ordered = TRUE)
-df1$Walc <- factor(df1$Walc, ordered = TRUE)
-df1$Dalc <- factor(df1$Dalc, ordered = TRUE)
-df1$goout <- factor(df1$goout, ordered = TRUE)
-df1$freetime <- factor(df1$freetime, ordered = TRUE)
-df1$famrel <- factor(df1$famrel, ordered = TRUE)
-
-df1$school <- factor(df1$school)
-df1$sex <- factor(df1$sex)
-df1$Pstatus <- factor(df1$Pstatus)
-df1$Mjob <- factor(df1$Mjob)
-df1$guardian <- factor(df1$guardian)
-df1$failures <- factor(df1$guardian)
-df1$address <- factor(df1$address)
-
 
 ```
 
