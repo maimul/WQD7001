@@ -107,3 +107,13 @@ sum(duplicated(df1.impute))
 
 # 12. Observe invalid values
 describe(df1.impute)
+```
+
+
+
+# Descriptive Analysis
+```{r}
+summary(df1)
+sum(is.na(df1))
+```
+
