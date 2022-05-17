@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(psych)
 library("codebook")
 ```
 
@@ -21,15 +22,11 @@ df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') 
 
 ### Explore the dataset
 ```{r}
-print(dim(df1)) # Check the dimension of the dataset
+dim(df1) # Check the dimension of the dataset
 
 # glimpse is better than str(). More organised, easy to read. 
 # Also dim f(x) is baked into the glimpse.
-print(glimpse(df1)) # from tidyverse
-View(df1) # view the dataset in a different window
-
-# Not best practice to use attach()
-# attach(df1) # Basically next time we need to get a column inside a f(x) we don't need to call df$column
+glimpse(df1) # from tidyverse
 
 # Explore the column names
 names(df1)
@@ -47,12 +44,11 @@ No NA values.
 
 ```{r}
 # Before we change the datatypes we must check the unique values in each column.
-# Start!. Adding Start for easier readability.
-lapply(df1, unique)
+lapply(df1, unique) # lapply always returns a list. 
 ```
 
 
-### Change the datatype of each accordingly 
+### Change the datatype of each column accordingly 
 ```{r}
 # List columns that should be factor (not ordered)
 col_factors <- c('school', 'sex', 'address','Pstatus','Mjob','Fjob','reason','guardian')
@@ -64,6 +60,50 @@ df1[col_factorsO] <- lapply(df1[col_factorsO], ordered, levels = c('LE3','GT3'))
 
 # List columns that should be binary
 col_binary <- c('schoolsup','famsup','paid','activities','nursery','higher','internet','romantic')
+df1[col_binary]  <- ifelse(df1[col_binary] == 'yes',1,0)
+df1[col_binary]  <- lapply(df1[col_binary], as.logical)
 
 ```
 
+```{r}
+# 4. Check for missing data
+sum(is.na(df1))
+
+# 5. If data is clean, randomly generate NA to the df1 dataset
+na.gen <- function(data, n){
+  i <- 1
+  while(i < n+1){
+    index1 <- sample(1:nrow(data), 1)
+    index2 <- sample(1:ncol(data), 1)
+    data[index1, index2] <- NA
+    i = i+1
+  }
+  return(data)
+}
+
+# 6. Generate 50 NAs to the df1 randomly
+df1 <- na.gen(df1, 50)
+
+# 7. Check again for missing data
+sum(is.na(df1))
+
+# 8. List number of missing data in column
+colSums(is.na(df1))
+
+# 9 List rows with missing data
+missingdata <- df1[!complete.cases(df1), ]
+sum(is.na(missingdata))
+
+# 10. Median imputation for numerical data & Mode imputation for categorical data
+df1.impute <- df1
+for (i in which(sapply(df1.impute, is.numeric))){
+  df1.impute[is.na(df1.impute[, i]), i] <- median(df1.impute[, i], na.rm = TRUE)
+}
+sum(is.na(df1.impute))
+
+# 11. Ientify duplicate row
+duplicated(df1.impute)
+sum(duplicated(df1.impute))
+
+# 12. Observe invalid values
+describe(df1.impute)
