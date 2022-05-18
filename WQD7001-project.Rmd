@@ -16,6 +16,7 @@ library("codebook")
 ### Load file to r as dataframe
 ```{r}
 df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
+df2 <- df1
 ```
 
 
