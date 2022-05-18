@@ -3,22 +3,22 @@ Principle of Data Science
 
 
 # Github common commands
-// Create a new branch
+**// Create a new branch**
 git checkout -b 'branch-name'
 
-// Move to the desired branch
+**// Move to the desired branch**
 git checkout 'branch-name'
 
-// To check for all the branches Remote and local (Remove -a to only view local branch)
+**// To check for all the branches Remote and local (Remove -a to only view local branch)**
 git branch -a
 
-// Push the new branch to repo. Use this common only once to let the repo create branch with same name.
+**// Push the new branch to repo. Use this common only once to let the repo create branch with same name.**
 git push -u origin 'branch-name'
 
-// delete branch locally
+**// delete branch locally**
 git branch -d localBranchName
 
-// delete branch remotely
+**// delete branch remotely**
 git push origin --delete remoteBranchName
 
 
