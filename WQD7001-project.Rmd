@@ -16,6 +16,7 @@ library("codebook")
 ### Load file to r as dataframe
 ```{r}
 df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
+df2 <- df1
 ```
 
 
@@ -58,10 +59,14 @@ df1[col_factors] <- lapply(df1[col_factors], factor)
 col_factorsO <- c('famsize')
 df1[col_factorsO] <- lapply(df1[col_factorsO], ordered, levels = c('LE3','GT3'))
 
+col_factorsO <- c(names(df1[24:29]),'Medu','Fedu')
+df1[col_factorsO] <- lapply(df1[col_factorsO], ordered)
+
 # List columns that should be binary
 col_binary <- c('schoolsup','famsup','paid','activities','nursery','higher','internet','romantic')
 df1[col_binary]  <- ifelse(df1[col_binary] == 'yes',1,0)
 df1[col_binary]  <- lapply(df1[col_binary], as.logical)
+
 
 ```
 
