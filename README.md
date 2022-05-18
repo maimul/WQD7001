@@ -24,6 +24,7 @@ git push origin --delete remoteBranchName
 
 ## Parents' Education Background and Children's Success
 
+
 Do students with highly educated parents tend to score better in Math?
 I.	Do parents’ education background correlate with student’s grade in the Math subject?
 II.	Do parents’ education background correlate with student’s past class failures?
