@@ -60,7 +60,7 @@ df1[col_factors] <- lapply(df1[col_factors], factor)
 col_factorsO <- c('famsize')
 df1[col_factorsO] <- lapply(df1[col_factorsO], ordered, levels = c('LE3','GT3'))
 
-col_factorsO <- c(names(df1[24:29]),'Medu','Fedu')
+col_factorsO <- c(names(df1[24:29]),'Medu','Fedu','traveltime','studytime')
 df1[col_factorsO] <- lapply(df1[col_factorsO], ordered)
 
 # List columns that should be binary
