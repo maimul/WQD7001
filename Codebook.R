@@ -1,4 +1,4 @@
-df <- read.csv("C:\\Users\\Rose Tiong\\Desktop\\Data\\Project\\student-por.csv")
+df <- read.csv("C:\\Users\\Rose Tiong\\Desktop\\Data\\Project\\student-mat.csv")
 df
 
 install.packages("dataMaid")
