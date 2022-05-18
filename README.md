@@ -1,6 +1,7 @@
 # WQD7001
 Principle of Data Science
 
+
 # Github common commands
 // Create a new branch
 git checkout -b 'branch-name'
@@ -20,7 +21,9 @@ git branch -d localBranchName
 // delete branch remotely
 git push origin --delete remoteBranchName
 
+
 # Just testing to show pull request
+
 
 Parents' Education Background and Children's Success
 
