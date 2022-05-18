@@ -122,6 +122,7 @@ describe(df1.impute)
 ```{r}
 summary(df1)
 sum(is.na(df1))
+df1
 ```
 
-df1
+
