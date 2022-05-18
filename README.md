@@ -1,6 +1,27 @@
 # WQD7001
 Principle of Data Science
 
+
+# Github common commands
+// Create a new branch
+git checkout -b 'branch-name'
+
+// Move to the desired branch
+git checkout 'branch-name'
+
+// To check for all the branches Remote and local (Remove -a to only view local branch)
+git branch -a
+
+// Push the new branch to repo. Use this common only once to let the repo create branch with same name.
+git push -u origin 'branch-name'
+
+// delete branch locally
+git branch -d localBranchName
+
+// delete branch remotely
+git push origin --delete remoteBranchName
+
+
 Parents' Education Background and Children's Success
 
 Do students with highly educated parents tend to score better in Math?

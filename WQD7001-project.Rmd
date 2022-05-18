@@ -75,6 +75,7 @@ df1[col_binary]  <- lapply(df1[col_binary], as.logical)
 # 4. Check for missing data
 sum(is.na(df1))
 
+
 # 5. If data is clean, randomly generate NA to the df1 dataset
 na.gen <- function(data, n){
   i <- 1
