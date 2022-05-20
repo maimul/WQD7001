@@ -93,16 +93,20 @@ describe(df1)
 summary(df1)
 sum(is.na(df1))
 
-barplot(table(df1$sex))
-barplot(table(df1$school))
-barplot(table(df1$Medu))
-barplot(table(df1$Fedu))
-barplot(table(df1$Mjob))
-barplot(table(df1$Fjob))
-barplot(table(df1$Pstatus))
-barplot(table(df1$traveltime))
-barplot(table(df1$studytime))
-barplot(table(df1$goout))
+# Display all the unordered factors in bar-plot
+for (i in col_factors){
+  barplot(table(df1[i]))
+}
+
+# Display all the ordered factors in bar-plot
+for (i in col_factorsO){
+  barplot(table(df1[i]))
+}
+
+# Display all the logical values in bar-plot
+for (i in col_binary){
+  barplot(table(df1[i]))
+}
 ```
 
 
