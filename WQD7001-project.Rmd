@@ -95,22 +95,22 @@ sum(is.na(df1))
 
 # Display all the unordered factors in bar-plot
 for (i in col_factors){
-  barplot(table(df1[i]), main = i)
+  barplot(table(df1[i]), main = i, col = c(7,10,13,14,19,23))
 }
 
 # Display all the ordered factors in bar-plot
 for (i in col_factorsO){
-  barplot(table(df1[i]), main = i)
+  barplot(table(df1[i]), main = i,col = c(7,10,13,14,19,23))
 }
 
 # Display all the logical values in bar-plot
 for (i in col_binary){
-  barplot(table(df1[i]), main = i)
+  barplot(table(df1[i]), main = i,col = c(7,10,13,14,19,23))
 }
 
 # Boxplot for all integer columns
 for (i in c('absences','G1','G2','G3')){
-  boxplot(df1[i], main = i)
+  boxplot(df1[i], main = i,col = c(7,10,13,14,19,23))
 }
 ```
 
