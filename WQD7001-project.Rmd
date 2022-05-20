@@ -17,7 +17,7 @@ library("codebook")
 ### Load file to r as dataframe
 ```{r}
 df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
-df2 <- df1
+
 ```
 
 
@@ -76,44 +76,14 @@ df1[col_binary]  <- lapply(df1[col_binary], as.logical)
 sum(is.na(df1))
 
 
-# 5. If data is clean, randomly generate NA to the df1 dataset
-na.gen <- function(data, n){
-  i <- 1
-  while(i < n+1){
-    index1 <- sample(1:nrow(data), 1)
-    index2 <- sample(1:ncol(data), 1)
-    data[index1, index2] <- NA
-    i = i+1
-  }
-  return(data)
-}
-
-# 6. Generate 50 NAs to the df1 randomly
-df1 <- na.gen(df1, 50)
-
-# 7. Check again for missing data
-sum(is.na(df1))
-
-# 8. List number of missing data in column
-colSums(is.na(df1))
-
 # 9 List rows with missing data
-missingdata <- df1[!complete.cases(df1), ]
-sum(is.na(missingdata))
+df1[!complete.cases(df1), ]
 
-# 10. Median imputation for numerical data & Mode imputation for categorical data
-df1.impute <- df1
-for (i in which(sapply(df1.impute, is.numeric))){
-  df1.impute[is.na(df1.impute[, i]), i] <- median(df1.impute[, i], na.rm = TRUE)
-}
-sum(is.na(df1.impute))
-
-# 11. Ientify duplicate row
-duplicated(df1.impute)
-sum(duplicated(df1.impute))
+# 11. Identify duplicate row
+sum(duplicated(df1))  
 
 # 12. Observe invalid values
-describe(df1.impute)
+describe(df1)
 ```
 
 
@@ -122,7 +92,17 @@ describe(df1.impute)
 ```{r}
 summary(df1)
 sum(is.na(df1))
-df1
+
+barplot(table(df1$sex))
+barplot(table(df1$school))
+barplot(table(df1$Medu))
+barplot(table(df1$Fedu))
+barplot(table(df1$Mjob))
+barplot(table(df1$Fjob))
+barplot(table(df1$Pstatus))
+barplot(table(df1$traveltime))
+barplot(table(df1$studytime))
+barplot(table(df1$goout))
 ```
 
 
