@@ -114,4 +114,14 @@ for (i in c('absences','G1','G2','G3')){
 }
 ```
 
+```{r}
+# Remove outliers from absences column
+outliers_up <- 8 + 1.5 * IQR(df1$absences) # only upper outliers as 1st quartile is 0 and makes sense to have 0 absence
+
+
+nrow(df1)
+paste0("There are ",sum(df1$absences > outliers_up)," outliers out of ",nrow(df1),".")
+paste0(round((15/395)*100,2),"% of the values in the absences column are outliers and since it is less than 10% of the dataset we can remove the outliers.")
+
+```
 
