@@ -1,0 +1,176 @@
+---
+title: "EDA"
+output: html_document
+date: '2022-05-23'
+---
+
+```{r setup}
+library(ggplot2)
+library(psych)
+library(plyr)
+
+setwd('C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of Data Science/Group Project')
+df<-read.csv(file = 'student-mat.csv')
+# df<-read.csv(file = "C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of 
+#                      Data Science/Group Project/student-mat.csv")
+
+# add a new column with the mean of G1 G2 and G3
+df$score_mean <- rowMeans(subset(df, select = c(G1, G2, G2)), na.rm = TRUE)
+# df = subset(df, select = -c(mean)) #drop mean column
+describe(df$score_mean)
+df
+```
+
+```{r}
+# scatterplot of Medu vs Fedu
+ggplot(df, aes(x=Medu, y=Fedu)) + geom_point()
+# ggplot(df, aes(x=Fedu)) + geom_boxplot()
+# ggplot(df, aes(x=Medu)) + geom_boxplot()
+ggplot(df, aes(x = Medu, y = Fedu, fill = score_mean)) + geom_tile() + geom_text(aes(label = round(score_mean, digits = 0)), color = "white", size = 5)
+```
+
+```{r}
+# avg score based on number of distinct in Medu/student 
+Medu_score = c()
+for (x in 0:4)
+{
+  Medu_score_mean = df[df$Medu==x, c("Medu" , "score_mean")]
+  Medu_score = append(Medu_score,mean(Medu_score_mean$score_mean))
+  cat(x, mean(Medu_score_mean$score_mean),"\n")
+}
+barplot(Medu_score,names.arg=c("0","1","2","3","4"),main = "avg test scores vs Medu",
+xlab = "Medu",
+ylab = "avg test scores")
+```
+
+```{r}
+# avg score based on number of distinct in Fedu/student 
+Fedu_score = c()
+for (x in 0:4)
+{
+  Fedu_score_mean = df[df$Fedu==x, c("Fedu" , "score_mean")]
+  Fedu_score = append(Fedu_score, mean(Fedu_score_mean$score_mean))
+  cat(x, mean(Fedu_score_mean$score_mean),"\n")
+}
+barplot(Fedu_score,names.arg=c("0","1","2","3","4"),main = "avg test scores vs Fedu",
+xlab = "Fedu",
+ylab = "avg test scores")
+```
+
+```{r}
+# scatterplot of failures vs Medu/Fedu
+ggplot(df, aes(x=Medu, y=failures)) + geom_point()
+ggplot(df, aes(x=Fedu, y=failures)) + geom_point()
+```
+
+
+```{r}
+#avg of number of failures vs Medu
+count(df$failures)
+Medu_failure = c()
+for (x in 0:4)
+{
+  Medu_failure_mean = df[df$Medu==x, c("Medu" , "failures")]
+  Medu_failure = append(Medu_failure, mean(Medu_failure_mean$failures))
+  cat(x, mean(Medu_failure_mean$failures),"\n")
+}
+barplot(Medu_failure,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Medu",
+xlab = "Medu",
+ylab = "avg number of failures")
+```
+
+```{r}
+#avg of number of failures vs Fedu
+Fedu_failure = c()
+for (x in 0:4)
+{
+  Fedu_failure_mean = df[df$Fedu==x, c("Fedu" , "failures")]
+  Fedu_failure = append(Fedu_failure, mean(Fedu_failure_mean$failures))
+  cat(x, mean(Fedu_failure_mean$failures),"\n")
+}
+barplot(Fedu_failure,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Fedu",
+xlab = "Fedu",
+ylab = "avg number of failures")
+```
+
+```{r}
+#total study time vs Medu
+Medu_studytime = c()
+for (x in 0:4)
+{
+  Medu_studytime_sum = df[df$Medu==x, c("Medu" , "studytime")]
+  Medu_studytime = append(Medu_studytime, sum(Medu_studytime_sum$studytime))
+  cat(x, sum(Medu_studytime_sum$studytime),"\n")
+}
+barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Medu",
+xlab = "Medu",
+ylab = "total study time")
+```
+
+
+```{r}
+#total study time vs Fedu
+Fedu_studytime = c()
+for (x in 0:4)
+{
+  Fedu_studytime_sum = df[df$Fedu==x, c("Fedu" , "studytime")]
+  Fedu_studytime = append(Fedu_studytime, sum(Fedu_studytime_sum$studytime))
+  cat(x, sum(Fedu_studytime_sum$studytime),"\n")
+}
+barplot(Fedu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Fedu",
+xlab = "Fedu",
+ylab = "total study time")
+```
+
+```{r}
+#total higher vs Medu
+Medu_higher = c()
+for (x in 0:4)
+{
+  Medu_higher_count = df[df$Medu==x, c("Medu" , "higher")]
+  count_higher = count(Medu_higher_count$higher == 'yes')
+  count_higher = data.frame(count_higher)
+  Medu_higher = append(Medu_higher, count_higher[count_higher$x=='TRUE', c("freq")])
+  cat(x, count_higher[count_higher$x=='TRUE', c("freq")],"\n")
+}
+barplot(Medu_higher,names.arg=c("0","1","2","3","4"),main = "total higher vs Medu",
+xlab = "Medu",
+ylab = "total higher")
+```
+
+
+```{r}
+#total higher vs Fedu
+Fedu_higher = c()
+for (x in 0:4)
+{
+  Fedu_higher_count = df[df$Fedu==x, c("Fedu" , "higher")]
+  count_higher = count(Fedu_higher_count$higher == 'yes')
+  count_higher = data.frame(count_higher)
+  Fedu_higher = append(Fedu_higher, count_higher[count_higher$x=='TRUE', c("freq")])
+  cat(x, count_higher[count_higher$x=='TRUE', c("freq")],"\n")
+}
+barplot(Fedu_higher,names.arg=c("0","1","2","3","4"),main = "total higher vs Fedu",
+xlab = "Fedu",
+ylab = "total higher")
+```
+
+```{r}
+count(df$Mjob)
+count(df$Fjob)
+```
+
+```{r}
+#avg of number of failures vs Medu
+Medu_studytime = c()
+for (x in 0:4)
+{
+  Medu_studytime_mean = df[df$Medu==x, c("Medu" , "studytime")]
+  Medu_studytime = append(Medu_studytime, mean(Medu_studytime_mean$studytime))
+  cat(x, mean(Medu_studytime_mean$studytime),"\n")
+}
+barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Medu",
+xlab = "Medu",
+ylab = "avg number of failures")
+```
+
