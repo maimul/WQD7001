@@ -177,7 +177,6 @@ df1_Fedu %>%
 
 # Ann
 library(ggplot2)
-df1 <- read.csv("C:\\Users\\HP 05-11-2019\\Downloads\\student-mat (1).csv")
 # Histogram of age
 hist(df1$age, main = "Distribution of student's age", xlab = "Student's age", ylab = "Number of student", col = "light blue")
 # Histogram of absences
