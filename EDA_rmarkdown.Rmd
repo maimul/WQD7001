@@ -9,8 +9,7 @@ library(ggplot2)
 library(psych)
 library(plyr)
 
-setwd('C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of Data Science/Group Project')
-df<-read.csv(file = 'student-mat.csv')
+df<-read.csv(file = '~/Documents/Principle of DS/Project/datasets/student-mat.csv')
 # df<-read.csv(file = "C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of 
 #                      Data Science/Group Project/student-mat.csv")
 
@@ -40,7 +39,7 @@ for (x in 0:4)
 }
 barplot(Medu_score,names.arg=c("0","1","2","3","4"),main = "avg test scores vs Medu",
 xlab = "Medu",
-ylab = "avg test scores")
+ylab = "avg test scores", col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
@@ -54,13 +53,13 @@ for (x in 0:4)
 }
 barplot(Fedu_score,names.arg=c("0","1","2","3","4"),main = "avg test scores vs Fedu",
 xlab = "Fedu",
-ylab = "avg test scores")
+ylab = "avg test scores", col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 # scatterplot of failures vs Medu/Fedu
-ggplot(df, aes(x=Medu, y=failures)) + geom_point()
-ggplot(df, aes(x=Fedu, y=failures)) + geom_point()
+ggplot(df, aes(x=Medu, y=failures),col = c(7,10,13,14,19,23)) + geom_point()
+ggplot(df, aes(x=Fedu, y=failures),col = c(7,10,13,14,19,23)) + geom_point()
 ```
 
 
@@ -76,7 +75,7 @@ for (x in 0:4)
 }
 barplot(Medu_failure,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Medu",
 xlab = "Medu",
-ylab = "avg number of failures")
+ylab = "avg number of failures",col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
@@ -90,7 +89,7 @@ for (x in 0:4)
 }
 barplot(Fedu_failure,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Fedu",
 xlab = "Fedu",
-ylab = "avg number of failures")
+ylab = "avg number of failures",col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
@@ -104,7 +103,7 @@ for (x in 0:4)
 }
 barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Medu",
 xlab = "Medu",
-ylab = "total study time")
+ylab = "total study time",col = c(7,10,13,14,19,23))
 ```
 
 
@@ -119,7 +118,7 @@ for (x in 0:4)
 }
 barplot(Fedu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Fedu",
 xlab = "Fedu",
-ylab = "total study time")
+ylab = "total study time",col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
@@ -135,7 +134,7 @@ for (x in 0:4)
 }
 barplot(Medu_higher,names.arg=c("0","1","2","3","4"),main = "total higher vs Medu",
 xlab = "Medu",
-ylab = "total higher")
+ylab = "total higher",col = c(7,10,13,14,19,23))
 ```
 
 
@@ -152,7 +151,7 @@ for (x in 0:4)
 }
 barplot(Fedu_higher,names.arg=c("0","1","2","3","4"),main = "total higher vs Fedu",
 xlab = "Fedu",
-ylab = "total higher")
+ylab = "total higher",col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
@@ -171,6 +170,6 @@ for (x in 0:4)
 }
 barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Medu",
 xlab = "Medu",
-ylab = "avg number of failures")
+ylab = "avg number of failures",col = c(7,10,13,14,19,23))
 ```
 
