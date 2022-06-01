@@ -241,92 +241,92 @@ ggplot(df1, aes(x = health, y = studytime, fill = higher)) +
 ```{r}
 # Aainaa
 sex.freq <- table(df1$sex)
-barplot(sex.freq, main = "Distribution of Student's Gender", xlab = "Student's Gender", ylab = "Number of Student", names.arg = c("Female", "Male"), col = "#FFEBCD")
+barplot(sex.freq, main = "Distribution of Student's Gender", xlab = "Student's Gender", ylab = "Number of Student", names.arg = c("Female", "Male"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 age.freq <- table(df1$age)
-barplot(age.freq, main = "Distribution of Student's Age", xlab = "Student's Age", ylab = "Number of Student", col = "#D8BFD8")
+barplot(age.freq, main = "Distribution of Student's Age", xlab = "Student's Age", ylab = "Number of Student", col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 pstatus.freq <- table(df1$Pstatus)
-barplot(pstatus.freq, main = "Distribution of Parent's Cohabitation Status", xlab = "Parent's Cohabitation Status", ylab = "Number of Student", names.arg = c("Living Apart", "Living Together"), col = "#D2691E")
+barplot(pstatus.freq, main = "Distribution of Parent's Cohabitation Status", xlab = "Parent's Cohabitation Status", ylab = "Number of Student", names.arg = c("Living Apart", "Living Together"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 medu.freq <- table(df1$Medu)
-barplot(medu.freq, main = "Distribution of Mother's Education", xlab = "Mother's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = "#FFE4E1")
+barplot(medu.freq, main = "Distribution of Mother's Education", xlab = "Mother's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 fedu.freq <- table(df1$Fedu)
-barplot(fedu.freq, main = "Distribution of Father's Education", xlab = "Father's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = "light blue")
+barplot(fedu.freq, main = "Distribution of Father's Education", xlab = "Father's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 mjob.freq <- table(df1$Mjob)
-barplot(sort(mjob.freq, decreasing = FALSE), main = "Distribution of Mother's Occupation", xlab = "Mother's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Teacher", "Housewife", "Civil Services", "Other"), col = "#FFC0CB")
+barplot(sort(mjob.freq, decreasing = FALSE), main = "Distribution of Mother's Occupation", xlab = "Mother's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Teacher", "Housewife", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 fjob.freq <- table(df1$Fjob)
-barplot(sort(fjob.freq, decreasing = FALSE), main = "Distribution of Father's Occupation", xlab = "Father's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Househusband", "Teacher", "Civil Services", "Other"), col = "#E0FFFF")
+barplot(sort(fjob.freq, decreasing = FALSE), main = "Distribution of Father's Occupation", xlab = "Father's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Househusband", "Teacher", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 studytime.freq <- table(df1$studytime)
-barplot(studytime.freq, main = "Distribution of Weekly Study Time", xlab = "Study Time", ylab = "Number of Student", names.arg = c("< 2 hours", "2 to 5 hours", "5 to 10 hours", "> 10 hours"), col = "#F0E68C")
+barplot(studytime.freq, main = "Distribution of Weekly Study Time", xlab = "Study Time", ylab = "Number of Student", names.arg = c("< 2 hours", "2 to 5 hours", "5 to 10 hours", "> 10 hours"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 # x axis labels are not clear
 failures.freq <- table(df1$failures)
-barplot(failures.freq, main = "Distribution of Pass Class Failures", xlab = "Pass Class Failures", ylab = "Number of Student", col = "#B0C4DE")
+barplot(failures.freq, main = "Distribution of Pass Class Failures", xlab = "Pass Class Failures", ylab = "Number of Student", col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 paid.freq <- table(df1$paid)
-barplot(paid.freq, main = "Distribution of Extra Paid Class (Math)", xlab = "Extra Paid Class", ylab = "Number of Student", names.arg = c("No", "Yes"), col = "#FFDAB9")
+barplot(paid.freq, main = "Distribution of Extra Paid Class (Math)", xlab = "Extra Paid Class", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 higher.freq <- table(df1$higher)
-barplot(higher.freq, main = "Distribution of Furthering Studies", xlab = "Higher Education", ylab = "Number of Student", names.arg = c("No", "Yes"), col = "#E9967A")
+barplot(higher.freq, main = "Distribution of Furthering Studies", xlab = "Higher Education", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 internet.freq <- table(df1$internet)
-barplot(internet.freq, main = "Distribution of Home Internet Access", xlab = "Internet Access at Home", ylab = "Number of Student", names.arg = c("No", "Yes"),col = "#66CDAA")
+barplot(internet.freq, main = "Distribution of Home Internet Access", xlab = "Internet Access at Home", ylab = "Number of Student", names.arg = c("No", "Yes"),col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 romantic.freq <- table(df1$romantic)
-barplot(romantic.freq, main = "Distribution of Romantic Relationship", xlab = "In Romantic Relationship", ylab = "Number of Student", names.arg = c("No", "Yes"), col = "#E6E6FA")
+barplot(romantic.freq, main = "Distribution of Romantic Relationship", xlab = "In Romantic Relationship", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 famrel.freq <- table(df1$famrel)
-barplot(famrel.freq, main = "Distribution of Student's Family Relationship", xlab = "Family Relationship", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Excellent"), col = "#FFE4B5")
+barplot(famrel.freq, main = "Distribution of Student's Family Relationship", xlab = "Family Relationship", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Excellent"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
 health.freq <- table(df1$health)
-barplot(health.freq, main = "Distribution of Student's Health Status", xlab = "Current Health Status", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Very Good"), col = "#F0FFF0")
+barplot(health.freq, main = "Distribution of Student's Health Status", xlab = "Current Health Status", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Very Good"), col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
-boxplot(df1$absences, main = "Distribution of School Absences", xlab = "Students", ylab = "Number of School Absences", col = "#DDA0DD")
+boxplot(df1$absences, main = "Distribution of School Absences", xlab = "Students", ylab = "Number of School Absences", col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
-boxplot(df1$G1, main = "Distribution of First Period Grade", xlab = "Math", ylab = "First Period Grade", col = "#AFEEEE")
+boxplot(df1$G1, main = "Distribution of First Period Grade", xlab = "Math", ylab = "First Period Grade", col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
-boxplot(df1$G2, main = "Distribution of Second Period Grade", xlab = "Math", ylab = "Second Period Grade", col = "#EEE8AA")
+boxplot(df1$G2, main = "Distribution of Second Period Grade", xlab = "Math", ylab = "Second Period Grade", col = c(7,10,13,14,19,23))
 ```
 
 ```{r}
-boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab = "Final Period Grade", col = "#F4A460")
+boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab = "Final Period Grade", col = c(7,10,13,14,19,23))
 ```
