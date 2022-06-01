@@ -175,5 +175,65 @@ df1_Fedu %>%
   plot(G3_sum ~ Medu, main="Father's education vs failures", 
    xlab="Father's education level ", ylab="Failure of students")
 
+# Ann
+library(ggplot2)
+df1 <- read.csv("C:\\Users\\HP 05-11-2019\\Downloads\\student-mat (1).csv")
+# Histogram of age
+hist(df1$age, main = "Distribution of student's age", xlab = "Student's age", ylab = "Number of student", col = "light blue")
+# Histogram of absences
+hist(df1$absences, main = "Distribution of student's absences", xlab = "Students absences", ylab = "Number of student", col = "light green")
+# Histogram of average grade
+average = (df1$G1 + df1$G2 + df1$G3)/3
+average
+hist(average, main = "Distribution of student's average grade", xlab = "Student's average grade", ylab = "Number of student", col = "yellow")
+# bar graph of studytime & higher vs Medu
+ggplot(df1, aes(x = Medu, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Mother's education level") +
+  xlab("Mother's eduction level") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = c("light blue", "light green"))
+# bar graph of studytime & higher vs Fedu
+ggplot(df1, aes(x = Fedu, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Father's education level") +
+  xlab("Father's eduction level") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = c("light blue", "light green"))
+# bar graph of studytime & higher vs Mjob
+ggplot(df1, aes(x = Mjob, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Mother's job") +
+  xlab("Mother's job") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = c("light blue", "light green"))
+# bar graph of studytime & higher vs Fjob
+ggplot(df1, aes(x = Fjob, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Father's job") +
+  xlab("Father's job") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = c("light blue", "light green"))
+# bar graph of studytime & higher vs paid
+ggplot(df1, aes(x = paid, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Extra paid classes") +
+  xlab("Extra paid classes") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = c("light blue", "light green"))
+# bar graph of studytime & higher vs famrel
+ggplot(df1, aes(x = famrel, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Quality of family relationships") +
+  xlab("Quality of family relationships") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = c("light blue", "light green"))
+# bar graph of studytime & higher vs health
+ggplot(df1, aes(x = health, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Current health status") +
+  xlab("Current health status") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = c("light blue", "light green"))
 
 ```
