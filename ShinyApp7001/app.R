@@ -132,8 +132,7 @@ for (x in 0:4)
 # User interface         uwu!      #
 ####################################
 
-ui <- fluidPage(theme = shinytheme("superhero"), #united
-                
+ui <- fluidPage(theme = shinytheme("united"), #united
                 
                 
                 titlePanel(div("WQD7001 Group 5", img(src = "https://i.ytimg.com/vi/UM5bxbosgD8/maxresdefault.jpg", width = "100%", height = "450", class = "pull-right"),)),
@@ -313,3 +312,6 @@ server <- function(input, output, session) {
 # Create the shiny app             #
 ####################################
 shinyApp(ui = ui, server = server)
+
+
+

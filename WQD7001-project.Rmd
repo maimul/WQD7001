@@ -96,7 +96,7 @@ sum(is.na(df1))
 
 # Display all the unordered factors in bar-plot
 for (i in col_factors){
-  barplot(table(df1[i]), main = i, col = c(7,10,13,14,19,23))
+  barplot(table(df1[i]), main = i, col = c('grey50',10,13,14,19,23))
 }
 
 # Display all the ordered factors in bar-plot
