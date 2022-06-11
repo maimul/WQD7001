@@ -9,7 +9,7 @@ library('psych')
 
 
 # Read data
-df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
+df1 <- read.csv('student-mat.csv') # Change this according to the file name and directory of the file.
 
 ### Change the datatype of each column accordingly 
 # List columns that should be factor (not ordered)
@@ -34,7 +34,7 @@ df1[col_binary]  <- lapply(df1[col_binary], as.logical)
 # EDA
 library('plyr')
 
-df <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
+df <- read.csv('student-mat.csv') # Change this according to the file name and directory of the file.
 # df<-read.csv(file = "C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of 
 #                      Data Science/Group Project/student-mat.csv")
 
@@ -42,7 +42,27 @@ df <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') #
 df$score_mean <- rowMeans(subset(df, select = c(G1, G2, G2)), na.rm = TRUE)
 # df = subset(df, select = -c(mean)) #drop mean column
 describe(df$score_mean)
-df
+
+
+# avg score based on number of distinct in Medu/student 
+Medu_score = c()
+for (x in 0:4)
+{
+  Medu_score_mean = df[df$Medu==x, c("Medu" , "score_mean")]
+  Medu_score = append(Medu_score,mean(Medu_score_mean$score_mean))
+  cat(x, mean(Medu_score_mean$score_mean),"\n")
+}
+
+
+# avg score based on number of distinct in Fedu/student 
+Fedu_score = c()
+for (x in 0:4)
+{
+  Fedu_score_mean = df[df$Fedu==x, c("Fedu" , "score_mean")]
+  Fedu_score = append(Fedu_score, mean(Fedu_score_mean$score_mean))
+  cat(x, mean(Fedu_score_mean$score_mean),"\n")
+}
+
 
 # avg score based on number of distinct in Medu/student 
 Medu_score = c()
@@ -145,7 +165,7 @@ ui <- fluidPage(theme = shinytheme("superhero"), #united
                   
                   # Options to choose for barplot
                   selectInput("Barplot", label = "Barplot:", 
-                              choices = list('sex', 'age','Pstatus','Medu','Fedu','Mjob','Fjob','studytime','failure','paid','higher','internet','romantic','famrel','health'), 
+                              choices = list('sex', 'age','Pstatus','Medu','Fedu','Mjob','Fjob','studytime','failures','paid','higher','internet','romantic','famrel','health'), 
                               selected = "sex")
                 ),
                 
@@ -170,7 +190,7 @@ ui <- fluidPage(theme = shinytheme("superhero"), #united
                               selected = "Mother's Education"),
                   # 2nd list of options to choose for barplot
                   selectInput("Barplot_EDA2", label = "Barplot:", 
-                              choices = list("Failures", "Study time","Higher"), 
+                              choices = list("Average test scores","Failures", "Study time","Higher"), 
                               selected = "Failures")
                 ),
                 
@@ -244,7 +264,12 @@ server <- function(input, output, session) {
     
     
     if(input$Barplot_EDA1 == "Mother's Education"){
-      if(input$Barplot_EDA2 == "Failures"){
+      if(input$Barplot_EDA2 == 'Average test scores'){
+        barplot(Medu_score,names.arg=c("0","1","2","3","4"),main = "avg test scores vs Medu",
+                xlab = "Medu",
+                ylab = "avg test scores",
+                col = c(7,10,13,14,19,23))
+      }else if(input$Barplot_EDA2 == "Failures"){
         barplot(Medu_failure,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Medu",
                 xlab = "Medu",
                 ylab = "avg number of failures",col = c(7,10,13,14,19,23))
@@ -260,6 +285,12 @@ server <- function(input, output, session) {
     }
     
     if(input$Barplot_EDA1 == "Father's Education"){
+      if(input$Barplot_EDA2 == 'Average test scores'){
+        barplot(Fedu_score,names.arg=c("0","1","2","3","4"),main = "avg test scores vs Fedu",
+                xlab = "Fedu",
+                ylab = "avg test scores",
+                col = c(7,10,13,14,19,23))
+      }
       if(input$Barplot_EDA2 == "Failures"){
         barplot(Fedu_failure,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Fedu",
                 xlab = "Fedu",
