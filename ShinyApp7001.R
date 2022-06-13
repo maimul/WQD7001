@@ -145,7 +145,7 @@ ui <- navbarPage(
   
   main_page <- tabPanel(
     title = "Overview",
-    titlePanel(div("", img(src = "https://i.ytimg.com/vi/UM5bxbosgD8/maxresdefault.jpg", width = "100%", height = "450", class = "pull-right"),)),
+    titlePanel(div("", img(src = "Blue and Orange Summer Bucket List Family Activity Infographic.png", width = "100%", class = "pull-right"),)),
     sidebarLayout(
       sidebarPanel(
         "Main: Do students with highly educated parents tend to score better in Math?"

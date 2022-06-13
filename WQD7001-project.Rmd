@@ -327,9 +327,8 @@ boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab
 ```{r}
 library('plyr')
 
-df <- df1
-# df<-read.csv(file = "C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of 
-#                      Data Science/Group Project/student-mat.csv")
+
+df<-read.csv("~/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/student-mat.csv")
 
 # add a new column with the mean of G1 G2 and G3
 df$score_mean <- rowMeans(subset(df, select = c(G1, G2, G2)), na.rm = TRUE)
