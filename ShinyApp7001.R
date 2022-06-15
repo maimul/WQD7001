@@ -12,7 +12,7 @@ library('psych')
 
 
 # Read data
-df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
+df1 <- read.csv('student-mat.csv') # Change this according to the file name and directory of the file.
 
 ### Change the datatype of each column accordingly 
 # List columns that should be factor (not ordered)
