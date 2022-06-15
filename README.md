@@ -59,3 +59,5 @@ These grades are related with the course subject, Math:
 ##### G2 - second period grade (numeric: from 0 to 20)
 ##### G3 - final grade (numeric: from 0 to 20, output target)
 ##### AverageScore - average of sum of G1, G2 and G3 for each student (numeric: from 0 to 20)
+
+Kaggle dataset: https://www.kaggle.com/datasets/uciml/student-alcohol-consumption
