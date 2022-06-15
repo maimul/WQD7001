@@ -37,7 +37,7 @@ df1[col_binary]  <- lapply(df1[col_binary], as.logical)
 # EDA
 library('plyr')
 
-df <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
+df <- read.csv('student-mat.csv') # Change this according to the file name and directory of the file.
 # df<-read.csv(file = "C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of 
 #                      Data Science/Group Project/student-mat.csv")
 
@@ -139,7 +139,7 @@ for (x in 0:4)
 ##### UI ######
 ###############
 ui <- navbarPage(                
-  theme = shinytheme("united"), # united
+  theme = shinytheme("flatly"), # united
   
   title = "Parents’ Education Background and Children’s Success",
   
