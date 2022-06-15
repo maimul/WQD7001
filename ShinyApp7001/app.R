@@ -145,7 +145,8 @@ ui <- navbarPage(
   
   main_page <- tabPanel(
     title = "Overview",
-    titlePanel(div("", img(src = 'infograph.png', class = "pull-right"),)),
+    img(src='infograph.png', align = "center", width = "100%"),
+    # titlePanel(div("", img(src = '~/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/infograph.png'),)),
     sidebarLayout(
       sidebarPanel(
         "Main: Do students with highly educated parents tend to score better in Math?"
