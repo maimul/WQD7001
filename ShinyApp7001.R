@@ -139,7 +139,7 @@ for (x in 0:4)
 ##### UI ######
 ###############
 ui <- navbarPage(                
-  theme = shinytheme("united"), # united
+  theme = shinytheme("flatly"), # united
   
   title = "Parents’ Education Background and Children’s Success",
   
