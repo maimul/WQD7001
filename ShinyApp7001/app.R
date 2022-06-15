@@ -149,14 +149,24 @@ ui <- navbarPage(
     # titlePanel(div("", img(src = '~/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/infograph.png'),)),
     sidebarLayout(
       sidebarPanel(
-        "Main: Do students with highly educated parents tend to score better in Math?"
+        "MAIN QUESTION:"
+      ),
+      mainPanel(
+        " ",br(),
+        "Do students with highly educated parents tend to score better in Math?",br()
+      ),
+    ),
+    sidebarLayout(
+      sidebarPanel(
+        "SUB-QUESTIONS:"
       ),
       mainPanel(
         "Sub-question(s):" ,br(),
         "1. Do parents’ education background correlate with a student's grade in the Math subject?",br(),
         "2. Do parents’ education background correlate with student’s past class failures?",br(),
         "3. Do parents’ education background affect a student's total study time?",br(),
-        "4. Do students with highly educated parents tend to be more ambitious and pursue higher education?",br()
+        "4. Do students with highly educated parents tend to be more ambitious and pursue higher education?",br(),
+        " ",br()
        ),
     ),
     img(src='infograph.png', align = "center", width = "100%"),
@@ -164,7 +174,7 @@ ui <- navbarPage(
   
   
   second_page <- tabPanel(
-    title = "Descriptive Statitics",
+    title = "Descriptive Statistics",
     
     #### 
     mainPanel(
