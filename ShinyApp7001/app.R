@@ -145,7 +145,7 @@ ui <- navbarPage(
   
   main_page <- tabPanel(
     title = "Overview",
-    img(src='infograph.png', align = "center", width = "100%"),
+    
     # titlePanel(div("", img(src = '~/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/infograph.png'),)),
     sidebarLayout(
       sidebarPanel(
@@ -159,6 +159,7 @@ ui <- navbarPage(
         "4. Do students with highly educated parents tend to be more ambitious and pursue higher education?",br()
        ),
     ),
+    img(src='infograph.png', align = "center", width = "100%"),
     ),
   
   
