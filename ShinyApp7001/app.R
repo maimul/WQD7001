@@ -9,6 +9,7 @@ library('tidyverse')
 library("codebook")
 library('ggplot2')
 library('psych')
+library(DT)
 
 
 # Read data
@@ -141,32 +142,45 @@ for (x in 0:4)
 ui <- navbarPage(                
   theme = shinytheme("flatly"), # united
   
-  title = "Up Maths!",
+  a("Up Maths!", href="https://github.com/maimul/WQD7001"),
   
   main_page <- tabPanel(
+    
     title = "Overview",
+    
     
     # titlePanel(div("", img(src = '~/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/infograph.png'),)),
     sidebarLayout(
       sidebarPanel(
-        h1("Main: Do students with highly educated parents tend to score better in Math?")
+#
+        "MAIN QUESTION:"
       ),
       mainPanel(
-        
-        h1("Sub-question(s):"),br(),
-        h3("1. Do parents’ education background correlate with a student's grade in the Math subject?"),br(),
-        h3("2. Do parents’ education background correlate with student’s past class failures?"),br(),
-        h3("3. Do parents’ education background affect a student's total study time?"),br(),
-        h3("4. Do students with highly educated parents tend to be more ambitious and pursue higher education?"),br()
+        h3("Do students with highly educated parents tend to score better in Math?"),br()
+      ),
+    ),
+sidebarLayout(
+  sidebarPanel(
+    "SUB-QUESTIONS:"
+  ),
+  mainPanel(
+    "1. Do parents’ education background correlate with a student's grade in the Math subject?",br(),
+    "2. Do parents’ education background correlate with student’s past class failures?",br(),
+    "3. Do parents’ education background affect a student's total study time?",br(),
+    "4. Do students with highly educated parents tend to be more ambitious and pursue higher education?",br(),
+    " ",br()
+
        ),
     ),
-    img(src='infograph.png', align = "center", width = "100%"),
+    HTML('<center><img src="infograph.png" width="50%"></center>'),
+
     ),
   
   
   second_page <- tabPanel(
-    title = "Descriptive Statitics",
-    
+    title = "Descriptive Statistics",
+    h2("The student-mat data"),
+    DT::dataTableOutput("mytable"),
     #### 
     mainPanel(
       verbatimTextOutput("sum"),
@@ -268,11 +282,16 @@ ui <- navbarPage(
 
 server <- function(input, output, session) {
   
+  
+  # print out the df
+  output$mytable = DT::renderDataTable({
+    df1
+  })
+  
   # Print out descriptive stats (summary)
   output$sum <- renderPrint({
     
-    print(df)
-    print(summary(df1))
+    #print(summary(df1))
 
     print(glimpse(df1))
     
