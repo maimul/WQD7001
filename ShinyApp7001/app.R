@@ -281,7 +281,7 @@ sidebarLayout(
     ),
     
     mainPanel(
-      tags$label(h3('Barplot')), # Status/Output Text Box
+      tags$label(h3('Plots')), # Status/Output Text Box
       # Output: Barplot
       plotOutput(outputId = "barPlot") 
       

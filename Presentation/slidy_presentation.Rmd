@@ -25,24 +25,10 @@ opts_chunk$set(echo = FALSE,
 
 ### Up Maths! User Interface
 
+
 ```{r image}
-include_graphics(c("overview.png","descStat.png","EDA1.png", "EDA3.png"))
+include_graphics(c("DA1.0.png","EDA1.0.png","EDA2.0.png"))
 ```
-
-
-Inputs:
-  
-  
-- Selecting specific education levels
-- Selecting parents education level
-- Selecting other features to compare.
-  
-  
-Outputs
-  
-  
-- Barplots
-- Highlights in the barplot
 
 
 
