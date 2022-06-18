@@ -15,12 +15,6 @@ opts_chunk$set(echo = FALSE,
 
 
 
-## R Markdown
-
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
-
 
 # Introduction
 - As the saying goes, parents are children’s first teacher in this world. We are interested in knowing how parents can influence their children, in terms of if the correlation occurs between parents’ education background and children’s academic performance. We are keen to know if the statement mentioned above makes sense.
@@ -68,15 +62,4 @@ Up Maths! app link: https://iqeiaz-0i0.shinyapps.io/ShinyApp7001/
 R codes and supporting document on Github: https://github.com/maimul/WQD7001 
 
 
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
 
