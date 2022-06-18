@@ -1,0 +1,82 @@
+---
+title: "Exploratory Analysis on Relationship between Parent Education and Children Success"
+
+author: "Aainaa \n\n Ann Lee \n\n Rose Tiong \n\n Maimul Hoque S2142027 \n\n Noel Ng"
+
+date: '2022-06-18'
+output: slidy_presentation
+---
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE,
+               out.width = "75%", 
+               fig.align = "center")
+```
+
+
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+
+# Introduction
+- As the saying goes, parents are children’s first teacher in this world. We are interested in knowing how parents can influence their children, in terms of if the correlation occurs between parents’ education background and children’s academic performance. We are keen to know if the statement mentioned above makes sense.
+- The analysis was conducted on the Kaggle dataset (Student Alcohol Consumption | Kaggle).
+- EDA and App Building were conducted by using R studio.
+
+# Up Maths! – App Description
+
+### Up Maths! User Interface
+
+```{r image}
+include_graphics(c("overview.png","descStat.png","EDA1.png", "EDA2.png"))
+```
+
+
+Inputs:
+  
+  
+- Selecting specific education levels
+- Selecting parents education level
+- Selecting other features to compare.
+  
+  
+Outputs
+  
+  
+- Barplots
+- Highlights in the barplot
+
+
+
+# Design Thinking
+- Phase 1: Empathise – Understood the need of the schools, teachers and parents in identifying what parents can do to help children perform better in schools.
+- Phase 2: Define – Set our goal: represent the kids to inform their parents that their education level influence the kids’ school grade too.
+- In order to let the users understood more about our topic, we prepared an infographic at overview of Shiny App to attract their attention.
+
+
+# Summary of Experience
+
+
+Up Maths! app link: https://iqeiaz-0i0.shinyapps.io/ShinyApp7001/ 
+  
+  
+  
+R codes and supporting document on Github: https://github.com/maimul/WQD7001 
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+

@@ -9,7 +9,7 @@ library('tidyverse')
 library("codebook")
 library('ggplot2')
 library('psych')
-library(DT)
+library("DT")
 
 
 # Read data
@@ -152,7 +152,6 @@ ui <- navbarPage(
     # titlePanel(div("", img(src = '~/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/infograph.png'),)),
     sidebarLayout(
       sidebarPanel(
-#
         "MAIN QUESTION:"
       ),
       mainPanel(
@@ -266,12 +265,9 @@ sidebarLayout(
     mainPanel(
       tags$label(h3('Barplot')), # Status/Output Text Box
       # Output: Barplot
-      plotOutput(outputId = "Barplot_EDA") 
-      
+      plotOutput(outputId = "Barplot_EDA"),
+      verbatimTextOutput("text") # print out the description
     ),
-
-    
-  
     )
 )
 
@@ -292,7 +288,6 @@ server <- function(input, output, session) {
   output$sum <- renderPrint({
     
     #print(summary(df1))
-
     print(glimpse(df1))
     
   })
@@ -414,6 +409,39 @@ server <- function(input, output, session) {
       }
     }
   })
+  
+  
+  # EDA Description
+  output$text <- renderPrint({
+    
+    if(input$Barplot_EDA1 == "Mother's Education"){
+      if(input$Barplot_EDA2 == 'Average test scores'){
+        cat("There is no correlation between Mother's education with student's average test scores")
+      }else if(input$Barplot_EDA2 == "Failures"){
+        cat("There is a negative correlation between Mother's education with number of student's past class failure.\nThe higher the Mother's education, the lower the number of student's past class failure.")
+      }else if(input$Barplot_EDA2 == "Study time"){
+        cat("There is a positive correlation between Mother's education with student's weekly study time.\nThe higher the Mother's education, the higher the student's weekly study time.")
+      }else if(input$Barplot_EDA2 == 'Higher'){
+        cat("There is a positive correlation between Mother's education with number of student who wants to take higher education.\nThe higher the Mother's education, the lower the number of student who wants to take higher education.")
+      }
+    }
+    
+    if(input$Barplot_EDA1 == "Father's Education"){
+      if(input$Barplot_EDA2 == 'Average test scores'){
+        cat("There is no correlation between Father's education with student's average test scores")
+      }else if(input$Barplot_EDA2 == "Failures"){
+        cat("There is a negative correlation between Father's education with number of student's past class failure.\nThe higher the Father's education, the lower the number of student's past class failure.")
+      }else if(input$Barplot_EDA2 == "Study time"){
+        cat("There is a positive correlation between Father's education with student's weekly study time.\nThe higher the Father's education, the higher the student's weekly study time.")
+      }else if(input$Barplot_EDA2 == "Higher"){
+        cat("There is a positive correlation between Father's education with number of student who wants to take higher education.\nThe higher the Father's education, the lower the number of student who wants to take higher education.")
+      }
+    }
+    
+  })
+  
+  
+  
   
 }
 

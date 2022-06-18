@@ -9,8 +9,8 @@ library(ggplot2)
 library(psych)
 library(plyr)
 
-setwd('C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of Data Science/Group Project')
-df<-read.csv(file = 'student-mat.csv')
+#setwd('C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of Data Science/Group Project')
+df<-read.csv(file = '/Users/maimul/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/student-mat.csv')
 # df<-read.csv(file = "C:/Users/Noel/Desktop/UM - Master of Data Science/WQD7001 - Principles of 
 #                      Data Science/Group Project/student-mat.csv")
 
@@ -18,7 +18,7 @@ df<-read.csv(file = 'student-mat.csv')
 df$score_mean <- rowMeans(subset(df, select = c(G1, G2, G2)), na.rm = TRUE)
 # df = subset(df, select = -c(mean)) #drop mean column
 describe(df$score_mean)
-df
+
 ```
 
 ################################################################################

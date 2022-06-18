@@ -1,5 +1,4 @@
 ---
-# Branch maimul
 title: "Parents’ Educational Background and Children’s Success"
 author: "Maimul"
 date: '2022-05-04'
@@ -18,9 +17,8 @@ library('psych')
 ### Load file to r as dataframe
 ```{r}
 df1 <- read.csv('~/Documents/Principle of DS/Project/datasets/student-mat.csv') # Change this according to the file name and directory of the file.
-
 ```
-
+![ ](infograph.png)
 
 
 ### Explore the dataset
@@ -94,26 +92,84 @@ describe(df1)
 summary(df1)
 sum(is.na(df1))
 
-# Display all the unordered factors in bar-plot
-for (i in col_factors){
-  barplot(table(df1[i]), main = i, col = c('grey50',10,13,14,19,23))
-}
-
-# Display all the ordered factors in bar-plot
-for (i in col_factorsO){
-  barplot(table(df1[i]), main = i,col = c(7,10,13,14,19,23))
-}
-
-# Display all the logical values in bar-plot
-for (i in col_binary){
-  barplot(table(df1[i]), main = i,col = c(7,10,13,14,19,23))
-}
-
-# Boxplot for all integer columns
-for (i in c('absences','G1','G2','G3')){
-  boxplot(df1[i], main = i,col = c(7,10,13,14,19,23))
-}
+# Aainaa
+barplot(table(df1$sex), main = "Distribution of Student's Gender", xlab = "Student's Gender", ylab = "Number of Student", names.arg = c("Female", "Male"), col = c(7,10,13,14,19,23))
 ```
+
+```{r}
+barplot(table(df1$age), main = "Distribution of Student's Age", xlab = "Student's Age", ylab = "Number of Student", col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$Pstatus), main = "Distribution of Parent's Cohabitation Status", xlab = "Parent's Cohabitation Status", ylab = "Number of Student", names.arg = c("Living Apart", "Living Together"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$Medu), main = "Distribution of Mother's Education", xlab = "Mother's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$Fedu), main = "Distribution of Father's Education", xlab = "Father's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(sort(table(df1$Mjob), decreasing = FALSE), main = "Distribution of Mother's Occupation", xlab = "Mother's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Teacher", "Housewife", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(sort(table(df1$Fjob), decreasing = FALSE), main = "Distribution of Father's Occupation", xlab = "Father's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Househusband", "Teacher", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$studytime), main = "Distribution of Weekly Study Time", xlab = "Study Time", ylab = "Number of Student", names.arg = c("< 2 hours", "2 to 5 hours", "5 to 10 hours", "> 10 hours"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+# x axis labels are not clear
+barplot(table(df1$failures), main = "Distribution of Pass Class Failures", xlab = "Pass Class Failures", ylab = "Number of Student", col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$paid), main = "Distribution of Extra Paid Class (Math)", xlab = "Extra Paid Class", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$higher), main = "Distribution of Furthering Studies", xlab = "Higher Education", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$internet), main = "Distribution of Home Internet Access", xlab = "Internet Access at Home", ylab = "Number of Student", names.arg = c("No", "Yes"),col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$romantic), main = "Distribution of Romantic Relationship", xlab = "In Romantic Relationship", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$famrel), main = "Distribution of Student's Family Relationship", xlab = "Family Relationship", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Excellent"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+barplot(table(df1$health), main = "Distribution of Student's Health Status", xlab = "Current Health Status", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Very Good"), col = c(7,10,13,14,19,23))
+```
+
+```{r}
+boxplot(df1$absences, main = "Distribution of School Absences", xlab = "Students", ylab = "Number of School Absences", col = c(7,10,13,14,19,23))
+```
+
+```{r}
+boxplot(df1$G1, main = "Distribution of First Period Grade", xlab = "Math", ylab = "First Period Grade", col = c(7,10,13,14,19,23))
+```
+
+```{r}
+boxplot(df1$G2, main = "Distribution of Second Period Grade", xlab = "Math", ylab = "Second Period Grade", col = c(7,10,13,14,19,23))
+```
+
+```{r}
+boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab = "Final Period Grade", col = c(7,10,13,14,19,23))
+```
+
+
 
 ```{r}
 # Remove outliers from absences column
@@ -239,83 +295,6 @@ ggplot(df1, aes(x = health, y = studytime, fill = higher)) +
 
 ```
 
-```{r}
-# Aainaa
-barplot(table(df1$sex), main = "Distribution of Student's Gender", xlab = "Student's Gender", ylab = "Number of Student", names.arg = c("Female", "Male"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$age), main = "Distribution of Student's Age", xlab = "Student's Age", ylab = "Number of Student", col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$Pstatus), main = "Distribution of Parent's Cohabitation Status", xlab = "Parent's Cohabitation Status", ylab = "Number of Student", names.arg = c("Living Apart", "Living Together"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$Medu), main = "Distribution of Mother's Education", xlab = "Mother's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$Fedu), main = "Distribution of Father's Education", xlab = "Father's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(sort(table(df1$Mjob), decreasing = FALSE), main = "Distribution of Mother's Occupation", xlab = "Mother's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Teacher", "Housewife", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(sort(table(df1$Fjob), decreasing = FALSE), main = "Distribution of Father's Occupation", xlab = "Father's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Househusband", "Teacher", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$studytime), main = "Distribution of Weekly Study Time", xlab = "Study Time", ylab = "Number of Student", names.arg = c("< 2 hours", "2 to 5 hours", "5 to 10 hours", "> 10 hours"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-# x axis labels are not clear
-barplot(table(df1$failures), main = "Distribution of Pass Class Failures", xlab = "Pass Class Failures", ylab = "Number of Student", col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$paid), main = "Distribution of Extra Paid Class (Math)", xlab = "Extra Paid Class", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$higher), main = "Distribution of Furthering Studies", xlab = "Higher Education", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$internet), main = "Distribution of Home Internet Access", xlab = "Internet Access at Home", ylab = "Number of Student", names.arg = c("No", "Yes"),col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$romantic), main = "Distribution of Romantic Relationship", xlab = "In Romantic Relationship", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$famrel), main = "Distribution of Student's Family Relationship", xlab = "Family Relationship", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Excellent"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-barplot(table(df1$health), main = "Distribution of Student's Health Status", xlab = "Current Health Status", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Very Good"), col = c(7,10,13,14,19,23))
-```
-
-```{r}
-boxplot(df1$absences, main = "Distribution of School Absences", xlab = "Students", ylab = "Number of School Absences", col = c(7,10,13,14,19,23))
-```
-
-```{r}
-boxplot(df1$G1, main = "Distribution of First Period Grade", xlab = "Math", ylab = "First Period Grade", col = c(7,10,13,14,19,23))
-```
-
-```{r}
-boxplot(df1$G2, main = "Distribution of Second Period Grade", xlab = "Math", ylab = "Second Period Grade", col = c(7,10,13,14,19,23))
-```
-
-```{r}
-boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab = "Final Period Grade", col = c(7,10,13,14,19,23))
-```
 
 
 
@@ -329,21 +308,18 @@ library('plyr')
 
 
 df<-read.csv("~/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/student-mat.csv")
-
 # add a new column with the mean of G1 G2 and G3
 df$score_mean <- rowMeans(subset(df, select = c(G1, G2, G2)), na.rm = TRUE)
 # df = subset(df, select = -c(mean)) #drop mean column
 describe(df$score_mean)
-df
+
 ```
 
-```{r}
-# scatterplot of Medu vs Fedu
-ggplot(df, aes(x=Medu, y=Fedu)) + geom_point()
-# ggplot(df, aes(x=Fedu)) + geom_boxplot()
-# ggplot(df, aes(x=Medu)) + geom_boxplot()
-ggplot(df, aes(x = Medu, y = Fedu, fill = score_mean)) + geom_tile() + geom_text(aes(label = round(score_mean, digits = 0)), color = "white", size = 5)
-```
+################################################################################
+Q1 Do parents’ education background correlate with student’s grade in the Math subject?
+Ans: no relation between edu vs grade
+     but
+     failure, studytime, higher shows positive correlation vs grade 
 
 ```{r}
 # avg score based on number of distinct in Medu/student 
@@ -356,7 +332,8 @@ for (x in 0:4)
 }
 barplot(Medu_score,names.arg=c("0","1","2","3","4"),main = "avg test scores vs Medu",
 xlab = "Medu",
-ylab = "avg test scores", col = c(7,10,13,14,19,23))
+ylab = "avg test scores",
+col = c("red", "green", "yellow", "blue", "purple"))
 ```
 
 ```{r}
@@ -370,14 +347,37 @@ for (x in 0:4)
 }
 barplot(Fedu_score,names.arg=c("0","1","2","3","4"),main = "avg test scores vs Fedu",
 xlab = "Fedu",
-ylab = "avg test scores", col = c(7,10,13,14,19,23))
+ylab = "avg test scores",
+col = c("red", "green", "yellow", "blue", "purple"))
 ```
 
 ```{r}
-# scatterplot of failures vs Medu/Fedu
-ggplot(df, aes(x=Medu, y=failures),col = c(7,10,13,14,19,23)) + geom_point()
-ggplot(df, aes(x=Fedu, y=failures),col = c(7,10,13,14,19,23)) + geom_point()
+# failures vs grade
+ggplot(df, aes(x=score_mean, y=failures, color=failures)) + geom_point(size=3)
 ```
+
+```{r}
+# studytime vs grade
+ggplot(df, aes(x=score_mean, y=studytime, color=studytime)) + geom_point(size = 3)
+```
+
+```{r}
+# grade vs higher
+higher_yes = df[df$higher == 'yes', c("higher" , "score_mean")]
+# count(higher_yes$higher == 'yes')
+yes=mean(higher_yes$score_mean)
+higher_no = df[df$higher == 'no', c("higher" , "score_mean")]
+# count(higher_no$higher == 'no')
+no=mean(higher_no$score_mean)
+cat("yes",yes,"no",no)
+higheryesno = data.frame(higher = c('yes','no'), score = c(yes,no))
+# higheryesno
+ggplot(higheryesno, aes(higher,score,fill = higher)) + geom_bar(stat = "identity") + geom_text(aes(label = signif(score)), nudge_y = 1)
+```
+
+################################################################################
+Q2 Do parents’ education background correlate with student’s past class failures?
+Ans: Negative correlation between edu vs failure
 
 ```{r}
 #avg of number of failures vs Medu
@@ -391,7 +391,8 @@ for (x in 0:4)
 }
 barplot(Medu_failure,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Medu",
 xlab = "Medu",
-ylab = "avg number of failures",col = c(7,10,13,14,19,23))
+ylab = "avg number of failures",
+col = c("red", "green", "yellow", "blue", "purple"))
 ```
 
 ```{r}
@@ -405,8 +406,13 @@ for (x in 0:4)
 }
 barplot(Fedu_failure,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Fedu",
 xlab = "Fedu",
-ylab = "avg number of failures",col = c(7,10,13,14,19,23))
+ylab = "avg number of failures",
+col = c("red", "green", "yellow", "blue", "purple"))
 ```
+
+################################################################################
+Q3 Do parents’ education background affect student’s total study time?
+Ans: Positive correlation between edu vs studytime 
 
 ```{r}
 #total study time vs Medu
@@ -419,7 +425,8 @@ for (x in 0:4)
 }
 barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Medu",
 xlab = "Medu",
-ylab = "total study time",col = c(7,10,13,14,19,23))
+ylab = "total study time",
+col = c("red", "green", "yellow", "blue", "purple"))
 ```
 
 
@@ -434,8 +441,13 @@ for (x in 0:4)
 }
 barplot(Fedu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Fedu",
 xlab = "Fedu",
-ylab = "total study time",col = c(7,10,13,14,19,23))
+ylab = "total study time",
+col = c("red", "green", "yellow", "blue", "purple"))
 ```
+
+################################################################################
+Q4 Do students with highly educated parents tend to be more ambitious and pursue higher education?
+Ans: Positive correlation between edu vs higher
 
 ```{r}
 #total higher vs Medu
@@ -450,7 +462,8 @@ for (x in 0:4)
 }
 barplot(Medu_higher,names.arg=c("0","1","2","3","4"),main = "total higher vs Medu",
 xlab = "Medu",
-ylab = "total higher",col = c(7,10,13,14,19,23))
+ylab = "total higher",
+col = c("red", "green", "yellow", "blue", "purple"))
 ```
 
 
@@ -467,24 +480,23 @@ for (x in 0:4)
 }
 barplot(Fedu_higher,names.arg=c("0","1","2","3","4"),main = "total higher vs Fedu",
 xlab = "Fedu",
-ylab = "total higher",col = c(7,10,13,14,19,23))
+ylab = "total higher",
+col = c("red", "green", "yellow", "blue", "purple"))
 ```
 
-```{r}
-count(df$Mjob)
-count(df$Fjob)
-```
+
 
 ```{r}
-#avg of number of failures vs Medu
-Medu_studytime = c()
-for (x in 0:4)
-{
-  Medu_studytime_mean = df[df$Medu==x, c("Medu" , "studytime")]
-  Medu_studytime = append(Medu_studytime, mean(Medu_studytime_mean$studytime))
-  cat(x, mean(Medu_studytime_mean$studytime),"\n")
-}
-barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "avg number of failures vs Medu",
-xlab = "Medu",
-ylab = "avg number of failures",col = c(7,10,13,14,19,23))
+# grade vs paid
+paid_yes = df[df$paid == 'yes', c("paid" , "score_mean")]
+# count(paid_yes$paid == 'yes')
+yes=mean(paid_yes$score_mean)
+paid_no = df[df$paid == 'no', c("paid" , "score_mean")]
+# count(paid_no$paid == 'no')
+no=mean(paid_no$score_mean)
+cat("yes",yes,"no",no)
+paidyesno = data.frame(boolean = c('yes','no'), score = c(yes,no))
+ggplot(paidyesno, aes(boolean,score)) + geom_bar(stat = "identity") + geom_text(aes(label = signif(score)), nudge_y = 1)
 ```
+
+
