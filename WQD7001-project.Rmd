@@ -243,6 +243,8 @@ hist(df1$absences, main = "Distribution of student's absences", xlab = "Students
 average = (df1$G1 + df1$G2 + df1$G3)/3
 average
 hist(average, main = "Distribution of student's average grade", xlab = "Student's average grade", ylab = "Number of student", col = "yellow")
+
+
 # bar graph of studytime & higher vs Medu
 ggplot(df1, aes(x = Medu, y = studytime, fill = higher)) + 
   geom_bar(position = "dodge", stat = "identity") +  
@@ -285,7 +287,8 @@ ggplot(df1, aes(x = famrel, y = studytime, fill = higher)) +
   xlab("Quality of family relationships") + 
   ylab("Student's study time") +  
   scale_fill_manual("Pursuing higher education", values = c("light blue", "light green"))
-# bar graph of studytime & higher vs health
+
+# bar graph of studytime & higher vs health X
 ggplot(df1, aes(x = health, y = studytime, fill = higher)) + 
   geom_bar(position = "dodge", stat = "identity") +  
   ggtitle("Student's study time & Pursuing Higher education VS Current health status") +

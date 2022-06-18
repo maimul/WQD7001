@@ -26,7 +26,7 @@ opts_chunk$set(echo = FALSE,
 ### Up Maths! User Interface
 
 ```{r image}
-include_graphics(c("overview.png","descStat.png","EDA1.png", "EDA2.png"))
+include_graphics(c("overview.png","descStat.png","EDA1.png", "EDA3.png"))
 ```
 
 

@@ -10,7 +10,10 @@ library("codebook")
 library('ggplot2')
 library('psych')
 library("DT")
+library('RColorBrewer')
 
+# Set colors for plots
+coul <- brewer.pal(5, "Set3")
 
 # Read data
 df1 <- read.csv('student-mat.csv') # Change this according to the file name and directory of the file.
@@ -32,7 +35,9 @@ col_binary <- c('schoolsup','famsup','paid','activities','nursery','higher','int
 df1[col_binary]  <- ifelse(df1[col_binary] == 'yes',1,0)
 df1[col_binary]  <- lapply(df1[col_binary], as.logical)
 
-
+# Histogram of average grade
+average = (df1$G1 + df1$G2 + df1$G3)/3
+average
 
 
 # EDA
@@ -48,25 +53,6 @@ df$score_mean <- rowMeans(subset(df, select = c(G1, G2, G2)), na.rm = TRUE)
 describe(df$score_mean)
 
 
-# avg score based on number of distinct in Medu/student 
-Medu_score = c()
-for (x in 0:4)
-{
-  Medu_score_mean = df[df$Medu==x, c("Medu" , "score_mean")]
-  Medu_score = append(Medu_score,mean(Medu_score_mean$score_mean))
-  cat(x, mean(Medu_score_mean$score_mean),"\n")
-}
-
-
-# avg score based on number of distinct in Fedu/student 
-Fedu_score = c()
-for (x in 0:4)
-{
-  Fedu_score_mean = df[df$Fedu==x, c("Fedu" , "score_mean")]
-  Fedu_score = append(Fedu_score, mean(Fedu_score_mean$score_mean))
-  cat(x, mean(Fedu_score_mean$score_mean),"\n")
-}
-
 
 # avg score based on number of distinct in Medu/student 
 Medu_score = c()
@@ -76,38 +62,6 @@ for (x in 0:4)
   Medu_score = append(Medu_score,mean(Medu_score_mean$score_mean))
   cat(x, mean(Medu_score_mean$score_mean),"\n")
 }
-
-
-#total study time vs Medu
-Medu_studytime = c()
-for (x in 0:4)
-{
-  Medu_studytime_sum = df[df$Medu==x, c("Medu" , "studytime")]
-  Medu_studytime = append(Medu_studytime, sum(Medu_studytime_sum$studytime))
-  cat(x, sum(Medu_studytime_sum$studytime),"\n")
-}
-
-
-#avg of number of failures vs Fedu
-Fedu_failure = c()
-for (x in 0:4)
-{
-  Fedu_failure_mean = df[df$Fedu==x, c("Fedu" , "failures")]
-  Fedu_failure = append(Fedu_failure, mean(Fedu_failure_mean$failures))
-  cat(x, mean(Fedu_failure_mean$failures),"\n")
-}
-
-
-#total study time vs Fedu
-Fedu_studytime = c()
-for (x in 0:4)
-{
-  Fedu_studytime_sum = df[df$Fedu==x, c("Fedu" , "studytime")]
-  Fedu_studytime = append(Fedu_studytime, sum(Fedu_studytime_sum$studytime))
-  cat(x, sum(Fedu_studytime_sum$studytime),"\n")
-}
-
-
 #total higher vs Medu
 Medu_higher = c()
 for (x in 0:4)
@@ -118,8 +72,41 @@ for (x in 0:4)
   Medu_higher = append(Medu_higher, count_higher[count_higher$x=='TRUE', c("freq")])
   cat(x, count_higher[count_higher$x=='TRUE', c("freq")],"\n")
 }
+#avg of number of failures vs Medu
+count(df$failures)
+Medu_failure = c()
+for (x in 0:4)
+{
+  Medu_failure_mean = df[df$Medu==x, c("Medu" , "failures")]
+  Medu_failure = append(Medu_failure, mean(Medu_failure_mean$failures))
+  cat(x, mean(Medu_failure_mean$failures),"\n")
+}
 
+#total study time vs Medu
+Medu_studytime = c()
+for (x in 0:4)
+{
+  Medu_studytime_sum = df[df$Medu==x, c("Medu" , "studytime")]
+  Medu_studytime = append(Medu_studytime, sum(Medu_studytime_sum$studytime))
+  cat(x, sum(Medu_studytime_sum$studytime),"\n")
+}
 
+# avg score based on number of distinct in Fedu/student 
+Fedu_score = c()
+for (x in 0:4)
+{
+  Fedu_score_mean = df[df$Fedu==x, c("Fedu" , "score_mean")]
+  Fedu_score = append(Fedu_score, mean(Fedu_score_mean$score_mean))
+  cat(x, mean(Fedu_score_mean$score_mean),"\n")
+}
+#avg of number of failures vs Fedu
+Fedu_failure = c()
+for (x in 0:4)
+{
+  Fedu_failure_mean = df[df$Fedu==x, c("Fedu" , "failures")]
+  Fedu_failure = append(Fedu_failure, mean(Fedu_failure_mean$failures))
+  cat(x, mean(Fedu_failure_mean$failures),"\n")
+}
 #total higher vs Fedu
 Fedu_higher = c()
 for (x in 0:4)
@@ -130,6 +117,73 @@ for (x in 0:4)
   Fedu_higher = append(Fedu_higher, count_higher[count_higher$x=='TRUE', c("freq")])
   cat(x, count_higher[count_higher$x=='TRUE', c("freq")],"\n")
 }
+#total study time vs Fedu
+Fedu_studytime = c()
+for (x in 0:4)
+{
+  Fedu_studytime_sum = df[df$Fedu==x, c("Fedu" , "studytime")]
+  Fedu_studytime = append(Fedu_studytime, sum(Fedu_studytime_sum$studytime))
+  cat(x, sum(Fedu_studytime_sum$studytime),"\n")
+}
+
+
+
+# bar graph of studytime & higher vs Medu
+studytime_1 <- ggplot(df1, aes(x = Medu, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Mother's education level") +
+  xlab("Mother's eduction level") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = coul)
+# bar graph of studytime & higher vs Fedu
+studytime_2 <- ggplot(df1, aes(x = Fedu, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Father's education level") +
+  xlab("Father's eduction level") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = coul)
+
+
+# bar graph of studytime & higher vs Mjob
+studytime_3 <- ggplot(df1, aes(x = Mjob, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Mother's job") +
+  xlab("Mother's job") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = coul)
+# bar graph of studytime & higher vs Fjob
+studytime_4 <- ggplot(df1, aes(x = Fjob, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Father's job") +
+  xlab("Father's job") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = coul)
+# bar graph of studytime & higher vs paid
+studytime_5 <- ggplot(df1, aes(x = paid, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Extra paid classes") +
+  xlab("Extra paid classes") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = coul)
+# bar graph of studytime & higher vs famrel
+studytime_6 <- ggplot(df1, aes(x = famrel, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Quality of family relationships") +
+  xlab("Quality of family relationships") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = coul)
+# bar graph of studytime & higher vs health
+studytime_7 <-ggplot(df1, aes(x = health, y = studytime, fill = higher)) + 
+  geom_bar(position = "dodge", stat = "identity") +  
+  ggtitle("Student's study time & Pursuing Higher education VS Current health status") +
+  xlab("Current health status") + 
+  ylab("Student's study time") +  
+  scale_fill_manual("Pursuing higher education", values = coul)
+
+
+
+
+
 
 
 
@@ -171,6 +225,7 @@ sidebarLayout(
 
        ),
     ),
+    # Change the image of the poster accordinly 
     HTML('<center><img src="infograph.png" width="50%"></center>'),
 
     ),
@@ -204,6 +259,7 @@ sidebarLayout(
       selectInput("Boxplot", label = "Boxplot:", 
                   choices = list("Absences" = "absences", "Grade 1" = "G1", "Grade 2" = "G2", "Grade 3" = "G3"), 
                   selected = "Absences"),
+      
     
     ),
     
@@ -220,7 +276,7 @@ sidebarLayout(
       
       # Options to choose for barplot
       selectInput("Barplot", label = "Barplot:", 
-                  choices = list('sex', 'age','Pstatus','Medu','Fedu','Mjob','Fjob','studytime','failures','paid','higher','internet','romantic','famrel','health'), 
+                  choices = list('sex', 'age','Pstatus','Medu','Fedu','Mjob','Fjob','studytime','failures','paid','higher','internet','romantic','famrel','health','avg_grade'), 
                   selected = "sex")
     ),
     
@@ -255,6 +311,8 @@ sidebarLayout(
                   choices = list("Average test scores","Failures", "Study time","Higher"), 
                   selected = "Failures"),
       
+
+      
       checkboxInput("checkbox_1", "Highlight by education level", value = 0, width = NULL),
       
       conditionalPanel(condition = "input.checkbox_1 == '1'",
@@ -263,7 +321,7 @@ sidebarLayout(
     ),
     
     mainPanel(
-      tags$label(h3('Barplot')), # Status/Output Text Box
+      tags$label(h3('Plots')), # Status/Output Text Box
       # Output: Barplot
       plotOutput(outputId = "Barplot_EDA"),
       verbatimTextOutput("text") # print out the description
@@ -295,48 +353,50 @@ server <- function(input, output, session) {
   # For Boxplot
   output$boxPlot <- renderPlot({
     if(input$Boxplot == 'absences'){
-      boxplot(df1$absences, main = "Distribution of School Absences", xlab = "Students", ylab = "Number of School Absences", col = c(7,10,13,14,19,23))
+      boxplot(df1$absences, main = "Distribution of School Absences", xlab = "Students", ylab = "Number of School Absences", col = coul)
     }else if(input$Boxplot == 'G1'){
-      boxplot(df1$G1, main = "Distribution of First Period Grade", xlab = "Math", ylab = "First Period Grade", col = c(7,10,13,14,19,23))
+      boxplot(df1$G1, main = "Distribution of First Period Grade", xlab = "Math", ylab = "First Period Grade", col = coul)
     }else if(input$Boxplot == 'G2'){
-      boxplot(df1$G2, main = "Distribution of Second Period Grade", xlab = "Math", ylab = "Second Period Grade", col = c(7,10,13,14,19,23))
+      boxplot(df1$G2, main = "Distribution of Second Period Grade", xlab = "Math", ylab = "Second Period Grade", col = coul)
     }else if(input$Boxplot == 'G3'){
-      boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab = "Final Period Grade", col = c(7,10,13,14,19,23))
+      boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab = "Final Period Grade", col = coul)
     }
   })
   
   # For Descriptive Barplots
   output$barPlot <- renderPlot({   
     if(input$Barplot == 'sex'){
-      barplot(table(df1$sex), main = "Distribution of Student's Gender", xlab = "Student's Gender", ylab = "Number of Student", names.arg = c("Female", "Male"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$sex), main = "Distribution of Student's Gender", xlab = "Student's Gender", ylab = "Number of Student", names.arg = c("Female", "Male"), col = coul)
     }else if(input$Barplot == 'age'){
-      barplot(table(df1$age), main = "Distribution of Student's Age", xlab = "Student's Age", ylab = "Number of Student", col = c(7,10,13,14,19,23))
+      barplot(table(df1$age), main = "Distribution of Student's Age", xlab = "Student's Age", ylab = "Number of Student", col = coul)
     }else if(input$Barplot == 'Pstatus'){
-      barplot(table(df1$Pstatus), main = "Distribution of Parent's Cohabitation Status", xlab = "Parent's Cohabitation Status", ylab = "Number of Student", names.arg = c("Living Apart", "Living Together"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$Pstatus), main = "Distribution of Parent's Cohabitation Status", xlab = "Parent's Cohabitation Status", ylab = "Number of Student", names.arg = c("Living Apart", "Living Together"), col = coul)
     }else if(input$Barplot == 'Medu'){
-      barplot(table(df1$Medu), main = "Distribution of Mother's Education", xlab = "Mother's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$Medu), main = "Distribution of Mother's Education", xlab = "Mother's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = coul)
     }else if(input$Barplot == 'Fedu'){
-      barplot(table(df1$Fedu), main = "Distribution of Father's Education", xlab = "Father's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$Fedu), main = "Distribution of Father's Education", xlab = "Father's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = coul)
     }else if(input$Barplot == 'Mjob'){
-      barplot(sort(table(df1$Mjob), decreasing = FALSE), main = "Distribution of Mother's Occupation", xlab = "Mother's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Teacher", "Housewife", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
+      barplot(sort(table(df1$Mjob), decreasing = FALSE), main = "Distribution of Mother's Occupation", xlab = "Mother's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Teacher", "Housewife", "Civil Services", "Other"), col = coul)
     }else if(input$Barplot == 'Fjob'){
-      barplot(sort(table(df1$Fjob), decreasing = FALSE), main = "Distribution of Father's Occupation", xlab = "Father's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Househusband", "Teacher", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
+      barplot(sort(table(df1$Fjob), decreasing = FALSE), main = "Distribution of Father's Occupation", xlab = "Father's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Househusband", "Teacher", "Civil Services", "Other"), col = coul)
     }else if(input$Barplot == 'studytime'){
-      barplot(table(df1$studytime), main = "Distribution of Weekly Study Time", xlab = "Study Time", ylab = "Number of Student", names.arg = c("< 2 hours", "2 to 5 hours", "5 to 10 hours", "> 10 hours"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$studytime), main = "Distribution of Weekly Study Time", xlab = "Study Time", ylab = "Number of Student", names.arg = c("< 2 hours", "2 to 5 hours", "5 to 10 hours", "> 10 hours"), col = coul)
     }else if(input$Barplot == 'failures'){
-      barplot(table(df1$failures), main = "Distribution of Pass Class Failures", xlab = "Pass Class Failures", ylab = "Number of Student", col = c(7,10,13,14,19,23))
+      barplot(table(df1$failures), main = "Distribution of Pass Class Failures", xlab = "Pass Class Failures", ylab = "Number of Student", col = coul)
     }else if(input$Barplot == 'paid'){
-      barplot(table(df1$paid), main = "Distribution of Extra Paid Class (Math)", xlab = "Extra Paid Class", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$paid), main = "Distribution of Extra Paid Class (Math)", xlab = "Extra Paid Class", ylab = "Number of Student", names.arg = c("No", "Yes"), col = coul)
     }else if(input$Barplot == 'higher'){
-      barplot(table(df1$higher), main = "Distribution of Furthering Studies", xlab = "Higher Education", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$higher), main = "Distribution of Furthering Studies", xlab = "Higher Education", ylab = "Number of Student", names.arg = c("No", "Yes"), col = coul)
     }else if(input$Barplot == 'internet'){
-      barplot(table(df1$internet), main = "Distribution of Home Internet Access", xlab = "Internet Access at Home", ylab = "Number of Student", names.arg = c("No", "Yes"),col = c(7,10,13,14,19,23))
+      barplot(table(df1$internet), main = "Distribution of Home Internet Access", xlab = "Internet Access at Home", ylab = "Number of Student", names.arg = c("No", "Yes"),col = coul)
     }else if(input$Barplot == 'romantic'){
-      barplot(table(df1$romantic), main = "Distribution of Romantic Relationship", xlab = "In Romantic Relationship", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$romantic), main = "Distribution of Romantic Relationship", xlab = "In Romantic Relationship", ylab = "Number of Student", names.arg = c("No", "Yes"), col = coul)
     }else if(input$Barplot == 'famrel'){
-      barplot(table(df1$famrel), main = "Distribution of Student's Family Relationship", xlab = "Family Relationship", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Excellent"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$famrel), main = "Distribution of Student's Family Relationship", xlab = "Family Relationship", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Excellent"), col = coul)
     }else if(input$Barplot == 'health'){
-      barplot(table(df1$health), main = "Distribution of Student's Health Status", xlab = "Current Health Status", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Very Good"), col = c(7,10,13,14,19,23))
+      barplot(table(df1$health), main = "Distribution of Student's Health Status", xlab = "Current Health Status", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Very Good"), col = coul)
+    }else if(input$Barplot == 'avg_grade'){
+      hist(average, main = "Distribution of student's average grade", xlab = "Student's average grade", ylab = "Number of student", col = coul)
     }
   }) #'sex', 'age','Pstatus','Medu','Fedu','Mjob','Fjob','studytime','failure','paid','higher','internet','romantic','famrel','health'
   
@@ -347,20 +407,20 @@ server <- function(input, output, session) {
     # Selecting by specific education level
     if (input$checkbox_1 == 1){
       if (input$color_option == 0){
-        color_list <- c(10,'grey50','grey50','grey50','grey50')
+        coul <- c(10,'grey50','grey50','grey50','grey50')
       }else if (input$color_option == 1){
-        color_list <- c('grey50',10,'grey50','grey50','grey50')
+        coul <- c('grey50',10,'grey50','grey50','grey50')
       }else if (input$color_option == 2){
-        color_list <- c('grey50','grey50',10,'grey50','grey50')
+        coul <- c('grey50','grey50',10,'grey50','grey50')
       }else if (input$color_option == 3){
-        color_list <- c('grey50','grey50','grey50',10,'grey50')
+        coul <- c('grey50','grey50','grey50',10,'grey50')
       }else if (input$color_option == 4){
-        color_list <- c('grey50','grey50','grey50','grey50',10)
+        coul <- c('grey50','grey50','grey50','grey50',10)
       }else{
-        color_list <- c(7,10,13,14,19,23)
+        coul <- coul
       }
     }else{
-      color_list <- c(7,10,13,14,19,23) #default color pallet
+      coul <- coul #default color pallet
     }
     
     
@@ -369,43 +429,43 @@ server <- function(input, output, session) {
     if(input$Barplot_EDA1 == "Mother's Education"){
       if(input$Barplot_EDA2 == 'Average test scores'){
         barplot(Medu_score,names.arg=c("0","1","2","3","4"),main = "Average test scores vs mother's education",
-                xlab = "Medu",
-                ylab = "avg test scores",
-                col = color_list)
+                xlab = "Mother's education",
+                ylab = "Average test scores",
+                col = coul)
       }else if(input$Barplot_EDA2 == "Failures"){
         barplot(Medu_failure,names.arg=c("0","1","2","3","4"),main = "Average number of failures vs mother's education",
-                xlab = "Medu",
-                ylab = "avg number of failures",col = color_list)
+                xlab = "Mother's education",
+                ylab = "Average number of failures",col = coul)
       }else if(input$Barplot_EDA2 == "Study time"){
-        barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "Study time vs mother's education",
-                xlab = "Medu",
-                ylab = "total study time",col = color_list)
+        
+        
+        print(studytime_1)
+        
+
       }else if(input$Barplot_EDA2 == 'Higher'){
         barplot(Medu_higher,names.arg=c("0","1","2","3","4"),main = "Total higher education vs mother's education",
-                xlab = "Medu",
-                ylab = "total higher",col = color_list)
+                xlab = "Mother's education",
+                ylab = "Total higher",col = coul)
       }
     }
     
     if(input$Barplot_EDA1 == "Father's Education"){
       if(input$Barplot_EDA2 == 'Average test scores'){
         barplot(Fedu_score,names.arg=c("0","1","2","3","4"),main = "Average test scores vs father's education",
-                xlab = "Fedu",
-                ylab = "avg test scores",
-                col = color_list)
+                xlab = "Father's education",
+                ylab = "Average test scores",
+                col = coul)
       }
       if(input$Barplot_EDA2 == "Failures"){
         barplot(Fedu_failure,names.arg=c("0","1","2","3","4"),main = "Average number of failures vs father's education",
-                xlab = "Fedu",
-                ylab = "avg number of failures",col = color_list)
+                xlab = "Father's education",
+                ylab = "Average number of failures",col = coul)
       }else if(input$Barplot_EDA2 == "Study time"){
-        barplot(Fedu_studytime,names.arg=c("0","1","2","3","4"),main = "Study time vs father's education",
-                xlab = "Fedu",
-                ylab = "total study time",col = color_list)
+        print(studytime_2)
       }else if(input$Barplot_EDA2 == "Higher"){
         barplot(Fedu_higher,names.arg=c("0","1","2","3","4"),main = "Total higher education vs father's education",
-                xlab = "Fedu",
-                ylab = "total higher",col = color_list)
+                xlab = "Father's education",
+                ylab = "Total higher",col = coul)
       }
     }
   })
