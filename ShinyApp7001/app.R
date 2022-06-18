@@ -326,8 +326,46 @@ sidebarLayout(
       plotOutput(outputId = "Barplot_EDA"),
       verbatimTextOutput("text") # print out the description
     ),
+    
+    ),
+  userManual <- tabPanel(
+    
+    ############
+    
+    title = "User manual",
+    
+    
+    # titlePanel(div("", img(src = '~/Documents/Principle of DS/Project/WQD7001/ShinyApp7001/infograph.png'),)),
+    sidebarLayout(
+      sidebarPanel(
+        "MAIN QUESTION:"
+      ),
+      mainPanel(
+        h3("Do students with highly educated parents tend to score better in Math?"),br()
+      ),
+    ),
+    sidebarLayout(
+      sidebarPanel(
+        "SUB-QUESTIONS:"
+      ),
+      mainPanel(
+        "1. Do parents’ education background correlate with a student's grade in the Math subject?",br(),
+        "2. Do parents’ education background correlate with student’s past class failures?",br(),
+        "3. Do parents’ education background affect a student's total study time?",br(),
+        "4. Do students with highly educated parents tend to be more ambitious and pursue higher education?",br(),
+        " ",br()
+        
+      ),
+    ),
+    # Change the image of the poster accordinly 
+    HTML('<center><img src="infograph.png" width="50%"></center>'),
+    
+    
+    
+    ##############
     )
 )
+
 
 
 ####################################
@@ -438,8 +476,11 @@ server <- function(input, output, session) {
                 ylab = "Average number of failures",col = coul)
       }else if(input$Barplot_EDA2 == "Study time"){
         
-        
-        print(studytime_1)
+        barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Medu",
+                xlab = "Medu",
+                ylab = "total study time",
+                col = coul)
+
         
 
       }else if(input$Barplot_EDA2 == 'Higher'){
@@ -461,7 +502,10 @@ server <- function(input, output, session) {
                 xlab = "Father's education",
                 ylab = "Average number of failures",col = coul)
       }else if(input$Barplot_EDA2 == "Study time"){
-        print(studytime_2)
+        barplot(Fedu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Fedu",
+                xlab = "Fedu",
+                ylab = "total study time",
+                col = coul)
       }else if(input$Barplot_EDA2 == "Higher"){
         barplot(Fedu_higher,names.arg=c("0","1","2","3","4"),main = "Total higher education vs father's education",
                 xlab = "Father's education",

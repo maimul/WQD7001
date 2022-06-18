@@ -6,6 +6,6 @@ server: rpubs.com
 hostUrl: rpubs.com
 appId: https://api.rpubs.com/api/v1/document/915996/39aff2f5318d42b2b05b55ddd95001eb
 bundleId: https://api.rpubs.com/api/v1/document/915996/39aff2f5318d42b2b05b55ddd95001eb
-url: http://rpubs.com/maimul/915996/edit
-when: 1655556009.35197
-lastSyncTime: 1655556009.35199
+url: http://rpubs.com/maimul/915996
+when: 1655558453.95732
+lastSyncTime: 1655558453.95737

@@ -11,6 +11,10 @@ library(tidyverse)
 library("codebook")
 library('ggplot2')
 library('psych')
+library('RColorBrewer')
+
+# Set colors for plots
+coul <- brewer.pal(5, "Set3")
 ```
 
 
@@ -93,80 +97,80 @@ summary(df1)
 sum(is.na(df1))
 
 # Aainaa
-barplot(table(df1$sex), main = "Distribution of Student's Gender", xlab = "Student's Gender", ylab = "Number of Student", names.arg = c("Female", "Male"), col = c(7,10,13,14,19,23))
+barplot(table(df1$sex), main = "Distribution of Student's Gender", xlab = "Student's Gender", ylab = "Number of Student", names.arg = c("Female", "Male"), col = coul)
 ```
 
 ```{r}
-barplot(table(df1$age), main = "Distribution of Student's Age", xlab = "Student's Age", ylab = "Number of Student", col = c(7,10,13,14,19,23))
+barplot(table(df1$age), main = "Distribution of Student's Age", xlab = "Student's Age", ylab = "Number of Student", col = coul)
 ```
 
 ```{r}
-barplot(table(df1$Pstatus), main = "Distribution of Parent's Cohabitation Status", xlab = "Parent's Cohabitation Status", ylab = "Number of Student", names.arg = c("Living Apart", "Living Together"), col = c(7,10,13,14,19,23))
+barplot(table(df1$Pstatus), main = "Distribution of Parent's Cohabitation Status", xlab = "Parent's Cohabitation Status", ylab = "Number of Student", names.arg = c("Living Apart", "Living Together"), col = coul)
 ```
 
 ```{r}
-barplot(table(df1$Medu), main = "Distribution of Mother's Education", xlab = "Mother's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
+barplot(table(df1$Medu), main = "Distribution of Mother's Education", xlab = "Mother's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = coul)
 ```
 
 ```{r}
-barplot(table(df1$Fedu), main = "Distribution of Father's Education", xlab = "Father's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = c(7,10,13,14,19,23))
+barplot(table(df1$Fedu), main = "Distribution of Father's Education", xlab = "Father's Education", ylab = "Number of Student", names.arg = c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"), col = coul)
 ```
 
 ```{r}
-barplot(sort(table(df1$Mjob), decreasing = FALSE), main = "Distribution of Mother's Occupation", xlab = "Mother's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Teacher", "Housewife", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
+barplot(sort(table(df1$Mjob), decreasing = FALSE), main = "Distribution of Mother's Occupation", xlab = "Mother's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Teacher", "Housewife", "Civil Services", "Other"), col = coul)
 ```
 
 ```{r}
-barplot(sort(table(df1$Fjob), decreasing = FALSE), main = "Distribution of Father's Occupation", xlab = "Father's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Househusband", "Teacher", "Civil Services", "Other"), col = c(7,10,13,14,19,23))
+barplot(sort(table(df1$Fjob), decreasing = FALSE), main = "Distribution of Father's Occupation", xlab = "Father's Occupation", ylab = "Number of Student", names.arg = c("Healthcare", "Househusband", "Teacher", "Civil Services", "Other"), col = coul)
 ```
 
 ```{r}
-barplot(table(df1$studytime), main = "Distribution of Weekly Study Time", xlab = "Study Time", ylab = "Number of Student", names.arg = c("< 2 hours", "2 to 5 hours", "5 to 10 hours", "> 10 hours"), col = c(7,10,13,14,19,23))
+barplot(table(df1$studytime), main = "Distribution of Weekly Study Time", xlab = "Study Time", ylab = "Number of Student", names.arg = c("< 2 hours", "2 to 5 hours", "5 to 10 hours", "> 10 hours"), col = coul)
 ```
 
 ```{r}
 # x axis labels are not clear
-barplot(table(df1$failures), main = "Distribution of Pass Class Failures", xlab = "Pass Class Failures", ylab = "Number of Student", col = c(7,10,13,14,19,23))
+barplot(table(df1$failures), main = "Distribution of Pass Class Failures", xlab = "Pass Class Failures", ylab = "Number of Student", col = coul)
 ```
 
 ```{r}
-barplot(table(df1$paid), main = "Distribution of Extra Paid Class (Math)", xlab = "Extra Paid Class", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+barplot(table(df1$paid), main = "Distribution of Extra Paid Class (Math)", xlab = "Extra Paid Class", ylab = "Number of Student", names.arg = c("No", "Yes"), col = coul)
 ```
 
 ```{r}
-barplot(table(df1$higher), main = "Distribution of Furthering Studies", xlab = "Higher Education", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+barplot(table(df1$higher), main = "Distribution of Furthering Studies", xlab = "Higher Education", ylab = "Number of Student", names.arg = c("No", "Yes"), col = coul)
 ```
 
 ```{r}
-barplot(table(df1$internet), main = "Distribution of Home Internet Access", xlab = "Internet Access at Home", ylab = "Number of Student", names.arg = c("No", "Yes"),col = c(7,10,13,14,19,23))
+barplot(table(df1$internet), main = "Distribution of Home Internet Access", xlab = "Internet Access at Home", ylab = "Number of Student", names.arg = c("No", "Yes"),col = coul)
 ```
 
 ```{r}
-barplot(table(df1$romantic), main = "Distribution of Romantic Relationship", xlab = "In Romantic Relationship", ylab = "Number of Student", names.arg = c("No", "Yes"), col = c(7,10,13,14,19,23))
+barplot(table(df1$romantic), main = "Distribution of Romantic Relationship", xlab = "In Romantic Relationship", ylab = "Number of Student", names.arg = c("No", "Yes"), col = coul)
 ```
 
 ```{r}
-barplot(table(df1$famrel), main = "Distribution of Student's Family Relationship", xlab = "Family Relationship", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Excellent"), col = c(7,10,13,14,19,23))
+barplot(table(df1$famrel), main = "Distribution of Student's Family Relationship", xlab = "Family Relationship", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Excellent"), col = coul)
 ```
 
 ```{r}
-barplot(table(df1$health), main = "Distribution of Student's Health Status", xlab = "Current Health Status", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Very Good"), col = c(7,10,13,14,19,23))
+barplot(table(df1$health), main = "Distribution of Student's Health Status", xlab = "Current Health Status", ylab = "Number of Student", names.arg = c("Very Bad", "Bad", "Average", "Good", "Very Good"), col = coul)
 ```
 
 ```{r}
-boxplot(df1$absences, main = "Distribution of School Absences", xlab = "Students", ylab = "Number of School Absences", col = c(7,10,13,14,19,23))
+boxplot(df1$absences, main = "Distribution of School Absences", xlab = "Students", ylab = "Number of School Absences", col = coul)
 ```
 
 ```{r}
-boxplot(df1$G1, main = "Distribution of First Period Grade", xlab = "Math", ylab = "First Period Grade", col = c(7,10,13,14,19,23))
+boxplot(df1$G1, main = "Distribution of First Period Grade", xlab = "Math", ylab = "First Period Grade", col = coul)
 ```
 
 ```{r}
-boxplot(df1$G2, main = "Distribution of Second Period Grade", xlab = "Math", ylab = "Second Period Grade", col = c(7,10,13,14,19,23))
+boxplot(df1$G2, main = "Distribution of Second Period Grade", xlab = "Math", ylab = "Second Period Grade", col = coul)
 ```
 
 ```{r}
-boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab = "Final Period Grade", col = c(7,10,13,14,19,23))
+boxplot(df1$G3, main = "Distribution of Final Period Grade", xlab = "Math", ylab = "Final Period Grade", col = coul)
 ```
 
 
