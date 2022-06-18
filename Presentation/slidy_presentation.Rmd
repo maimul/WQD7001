@@ -54,6 +54,10 @@ Outputs
 
 # Summary of Experience
 
+- In this is our first experience in learning to deploy our Up Math! ShinyApp and successfully deployed within a short period (1.5weeks).
+- The shiny App's dashboard is generated with three components: user interface object, server function, and call to the shinyApp function.
+- Besides that, data visualization and exploratory data analysis are performed in Rstudio.
+- In the shinyApp, the user needs to take a long time to load the graphs themselves; thus, the user wouldn't be satisfied when using the App. Therefore, we have shown the charts based on the inputs selected by the user. For example, the user chooses the available dependent and independent variables and shows the graph within seconds.
 
 Up Maths! app link: https://iqeiaz-0i0.shinyapps.io/ShinyApp7001/ 
   

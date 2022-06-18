@@ -344,7 +344,7 @@ server <- function(input, output, session) {
   output$Barplot_EDA <- renderPlot({
     
     
-    
+    # Selecting by specific education level
     if (input$checkbox_1 == 1){
       if (input$color_option == 0){
         color_list <- c(10,'grey50','grey50','grey50','grey50')

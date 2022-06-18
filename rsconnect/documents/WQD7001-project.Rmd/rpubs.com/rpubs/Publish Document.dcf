@@ -4,8 +4,8 @@ username:
 account: rpubs
 server: rpubs.com
 hostUrl: rpubs.com
-appId: https://api.rpubs.com/api/v1/document/915621/308cd6f040f54a28b7a748eb163bcabe
-bundleId: https://api.rpubs.com/api/v1/document/915621/308cd6f040f54a28b7a748eb163bcabe
-url: http://rpubs.com/maimul/915621
-when: 1655438547.44217
-lastSyncTime: 1655438547.44219
+appId: https://api.rpubs.com/api/v1/document/915999/6f6d4e0b38934feaa49b2e651830b793
+bundleId: https://api.rpubs.com/api/v1/document/915999/6f6d4e0b38934feaa49b2e651830b793
+url: http://rpubs.com/publish/claim/915999/0ec3693aa327437fafeffbf26e59e589
+when: 1655546405.98155
+lastSyncTime: 1655546405.98156
