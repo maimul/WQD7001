@@ -1,7 +1,7 @@
 ---
 title: "Exploratory Analysis on Relationship between Parent Education and Children Success"
 
-author: "Aainaa \n\n Ann Lee \n\n Rose Tiong \n\n Maimul Hoque S2142027 \n\n Noel Ng"
+author: "Maimul Hoque (S2142027) - Group Leader \n\n Aainaa Nadia Binti Mohammed Hashim (S2043599) \n\n Noel Ng Fong Nian (S2142165) \n\n Rose Tiong (S2123103) \n\n Wong Ann Li (S2148268)"
 
 date: '2022-06-18'
 output: slidy_presentation
