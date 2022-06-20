@@ -49,7 +49,7 @@ Up Maths! app link: https://iqeiaz-0i0.shinyapps.io/ShinyApp7001/
   
   
   
-R codes and supporting document on Github: https://github.com/maimul/WQD7001 
+R codes and supporting document on Github: https://github.com/maimul/WQD7001/tree/main/ShinyApp7001
 
 
 
