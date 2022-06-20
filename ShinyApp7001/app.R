@@ -493,17 +493,17 @@ server <- function(input, output, session) {
     
     if(input$Barplot_EDA1 == "Mother's Education"){
       if(input$Barplot_EDA2 == 'Average test scores'){
-        barplot(Medu_score,names.arg=c("0","1","2","3","4"),main = "Average test scores vs mother's education",
+        barplot(Medu_score,names.arg=c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"),main = "Average test scores vs mother's education",
                 xlab = "Mother's education",
                 ylab = "Average test scores",
                 col = coul)
       }else if(input$Barplot_EDA2 == "Failures"){
-        barplot(Medu_failure,names.arg=c("0","1","2","3","4"),main = "Average number of failures vs mother's education",
+        barplot(Medu_failure,names.arg=c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"),main = "Average number of failures vs mother's education",
                 xlab = "Mother's education",
                 ylab = "Average number of failures",col = coul)
       }else if(input$Barplot_EDA2 == "Study time"){
         
-        barplot(Medu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Medu",
+        barplot(Medu_studytime,names.arg=c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"),main = "study time vs Medu",
                 xlab = "Medu",
                 ylab = "total study time",
                 col = coul)
@@ -519,22 +519,22 @@ server <- function(input, output, session) {
     
     if(input$Barplot_EDA1 == "Father's Education"){
       if(input$Barplot_EDA2 == 'Average test scores'){
-        barplot(Fedu_score,names.arg=c("0","1","2","3","4"),main = "Average test scores vs father's education",
+        barplot(Fedu_score,names.arg=c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"),main = "Average test scores vs father's education",
                 xlab = "Father's education",
                 ylab = "Average test scores",
                 col = coul)
       }
       if(input$Barplot_EDA2 == "Failures"){
-        barplot(Fedu_failure,names.arg=c("0","1","2","3","4"),main = "Average number of failures vs father's education",
+        barplot(Fedu_failure,names.arg=c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"),main = "Average number of failures vs father's education",
                 xlab = "Father's education",
                 ylab = "Average number of failures",col = coul)
       }else if(input$Barplot_EDA2 == "Study time"){
-        barplot(Fedu_studytime,names.arg=c("0","1","2","3","4"),main = "study time vs Fedu",
+        barplot(Fedu_studytime,names.arg=c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"),main = "study time vs Fedu",
                 xlab = "Fedu",
                 ylab = "total study time",
                 col = coul)
       }else if(input$Barplot_EDA2 == "Higher"){
-        barplot(Fedu_higher,names.arg=c("0","1","2","3","4"),main = "Total higher education vs father's education",
+        barplot(Fedu_higher,names.arg=c("None", "4th Grade", "5-9th Grade", "Secondary Edu", "Higher Edu"),main = "Total higher education vs father's education",
                 xlab = "Father's education",
                 ylab = "Total higher",col = coul)
       }
