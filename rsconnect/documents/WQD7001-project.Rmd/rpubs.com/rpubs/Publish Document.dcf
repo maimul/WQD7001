@@ -6,6 +6,6 @@ server: rpubs.com
 hostUrl: rpubs.com
 appId: https://api.rpubs.com/api/v1/document/916003/cc4e3838342c44f08f3d183b87ac70f3
 bundleId: https://api.rpubs.com/api/v1/document/916003/cc4e3838342c44f08f3d183b87ac70f3
-url: http://rpubs.com/publish/claim/916003/a17db9ee918147b094feb1dbc41320b0
-when: 1655548339.60961
-lastSyncTime: 1655548339.60969
+url: http://rpubs.com/maimul/916003
+when: 1655712521.5289
+lastSyncTime: 1655712521.52891
