@@ -38,3 +38,5 @@ mainPanel(
   "The output will be a barplot displaying at the right side of the page where it shows the relationship between the first and second selected variables." ,br(),
   "There is also an option for highlighting the intended barplot column. Just by clicking the square box at the left hand side of "Highlight by education level", an scale bar will appear for you to select your intended barplot column to highlight.",br(),
 ),
+
+

@@ -335,15 +335,58 @@ sidebarLayout(
     
     title = "User manual",
     
-    h2(a("- ShinyApp github source code", href="https://github.com/maimul/WQD7001/tree/main/ShinyApp7001")),
-    h2(a("- Presentation slides on Rpubs", href="https://rpubs.com/maimul/mathup")),
-    h2(a("- R Markdown on Rpubs", href="https://rpubs.com/maimul/WQD7001_groupAssign")),
+    h2(a("                  - ShinyApp github source code", href="https://github.com/maimul/WQD7001/tree/main/ShinyApp7001")),
+    h2(a("                  - Presentation slides on Rpubs", href="https://rpubs.com/maimul/mathup")),
+    h2(a("                  - R Markdown on Rpubs", href="https://rpubs.com/maimul/WQD7001_groupAssign")),
     
     
-    HTML('<center><img src="navbar1.png" width="80%"></center>'),
-    HTML('<center><img src="DA1.0.png" width="80%"></center>'),
-    HTML('<center><img src="EDA1.0.png" width="50%"></center>'),
-    HTML('<center><img src="EDA2.0.png" width="50%"></center>'),
+    HTML('<center><img src="navbar1.png" width="65%"></center>'),
+    HTML('<center><img src="DA1.0.png" width="65%"></center>'),
+    HTML('<center><img src="EDA1.0.png" width="65%"></center>'),
+    HTML('<center><img src="EDA2.0.png" width="65%"></center>'),
+    
+    mainPanel(
+      h1("Overview tab"),br(),
+      h3("It shows the 4 main research questions and infographic of answers to the questions."),br(),
+      "",br(),
+      h1("Descriptive Statistics tab"),br(),
+      h3("It shows the research project's dataset and statistics summary of the dataset. "),br(),
+      "",br(),
+      h1("Descriptive Analysis tab"),br(),
+      h3("It shows the descriptive boxplot and barplot and also 1 histogram within barplot section."),br(),br(),
+      "Boxplot",br(),
+      "Input-Output: ",br(),
+      " 1.	'absences' - Distribution of school absences",br(),
+      " 2.	'G1' - Distribution of first period grade",br(),
+      " 3.	'G3' - Distribution of second period grade",br(),
+      " 4.	'G4' - Distribution of final period grade ",br(),br(),
+      "Barplot",br(),
+      "Input-Output:",br(),
+      "1.	'sex' - Distribution of student's gender",br(),
+      "2.	'age' - Distribution of student's age",br(),
+      "3.	'Pstatus' - Distribution of parent's cohabitation status",br(),
+      "4.	'Medu' - Distribution of mother's education",br(),
+      "5.	'Fedu' - Distribution of father's education",br(),
+      "6.	'Mjob' - Distribution of mother's occupation",br(),
+      "7.	'Fjob' - Distribution of father's occupation",br(),
+      "8.	'studytime' - Distribution of weekly study time",br(),
+      "9.	'failures' - Distribution of pass class failures",br(),
+      "10.	'paid' - Distribution of extra paid class (math)",br(),
+      "11.	'higher' - Distribution of furthering studies",br(),
+      "12.	'internet' - Distribution of home internet access",br(),
+      "13.	'romantic' - Distribution of romantic relationship",br(),
+      "14.	'famrel' - Distribution of student's home relationship",br(),
+      "15.	'health' - Distribution of student's health status",br(),
+      "",br(),
+      h1("Exploratory Descriptive Analysis tab"),br(),
+      h3("It shows the exploratory descriptive analysis of the relationship between Father's and mother's education with students' average test score, number of test failures, study time and intention to go for higher education. It has 2 different barplot tab for input where each of it consists of the following input option: "),br(),
+      br(),"Barplot input tab 1: ",br(),"Father's education and mother's education",br(),br(),
+      "Barplot input tab 2:",br()," Average test scores, Failures, Study time and Higher",br(),
+      "The output will be a barplot displaying at the right side of the page where it shows the relationship between the first and second selected variables." ,br(),
+      "There is also an option for highlighting the intended barplot column. Just by clicking the square box at the left hand side of 'Highlight by education level', an scale bar will appear for you to select your intended barplot column to highlight.",br(),br(),br(),
+    ),
+    
+    
     
     
     ##############
@@ -528,6 +571,13 @@ server <- function(input, output, session) {
     
   })
   
+  output$usermanual <- renderPrint({
+    
+    
+    
+    
+    
+  })
   
   
   
