@@ -234,6 +234,7 @@ sidebarLayout(
   second_page <- tabPanel(
     title = "Descriptive Statistics",
     h2("The student-mat data"),
+    h2(a("Dataset and R codes @github", href="https://github.com/maimul/WQD7001/tree/main/ShinyApp7001")),
     DT::dataTableOutput("mytable"),
     #### 
     mainPanel(
