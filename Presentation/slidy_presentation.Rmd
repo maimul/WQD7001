@@ -18,8 +18,14 @@ opts_chunk$set(echo = FALSE,
 
 # Introduction
 - As the saying goes, parents are children’s first teacher in this world. We are interested in knowing how parents can influence their children, in terms of if the correlation occurs between parents’ education background and children’s academic performance. We are keen to know if the statement mentioned above makes sense.
-- The analysis was conducted on the Kaggle dataset (Student Alcohol Consumption | Kaggle).
+- The analysis was conducted on the Kaggle dataset (Student Alcohol Consumption | Kaggle). 
+https://www.kaggle.com/datasets/uciml/student-alcohol-consumption
 - EDA and App Building were conducted by using R studio.
+
+
+
+
+
 
 # Up Maths! – App Description
 
@@ -33,9 +39,9 @@ include_graphics(c("DA1.0.png","EDA1.0.png","EDA2.0.png"))
 
 
 # Design Thinking
-- Phase 1: Empathise – Understood the need of the schools, teachers and parents in identifying what parents can do to help children perform better in schools.
+- Phase 1: Empathize – Understood the need of the schools, teachers and parents in identifying what parents can do to help children perform better in schools.
 - Phase 2: Define – Set our goal: represent the kids to inform their parents that their education level influence the kids’ school grade too.
-- In order to let the users understood more about our topic, we prepared an infographic at overview of Shiny App to attract their attention.
+- Phase 3: In order to let the users understood more about our topic, we prepared an infographic at overview of Shiny App to attract their attention.
 
 
 # Summary of Experience

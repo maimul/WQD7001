@@ -335,6 +335,10 @@ sidebarLayout(
     
     title = "User manual",
     
+    h2(a("- ShinyApp github source code", href="https://github.com/maimul/WQD7001/tree/main/ShinyApp7001")),
+    h2(a("- Presentation slides on Rpubs", href="https://rpubs.com/maimul/mathup")),
+    h2(a("- R Markdown on Rpubs", href="https://rpubs.com/maimul/WQD7001_groupAssign")),
+    
     
     HTML('<center><img src="navbar1.png" width="80%"></center>'),
     HTML('<center><img src="DA1.0.png" width="80%"></center>'),
