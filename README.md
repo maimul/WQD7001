@@ -21,11 +21,7 @@ git branch -d localBranchName
 // delete branch remotely
 git push origin --delete remoteBranchName
 
-
-# Just testing to show pull request~
-
-
-Parents' Education Background and Children's Success
+# Parents' Education Background and Children's Success
 
 Do students with highly educated parents tend to score better in Math?
 I.	Do parents’ education background correlate with student’s grade in the Math subject?
