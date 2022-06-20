@@ -3,7 +3,7 @@ title: "Exploratory Analysis on Relationship between Parent Education and Childr
 
 author: "Maimul Hoque (S2142027) - Group Leader \n\n Aainaa Nadia Binti Mohammed Hashim (S2043599) \n\n Noel Ng Fong Nian (S2142165) \n\n Rose Tiong (S2123103) \n\n Wong Ann Li (S2148268)"
 
-date: '2022-06-18'
+date: '2022-06-20'
 output: slidy_presentation
 ---
 ```{r setup, include=FALSE}
